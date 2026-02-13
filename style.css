@@ -302,29 +302,33 @@ footer {
 
 /* Mobile */
 @media (max-width: 768px) {
-    .main-header {
-        flex-direction: column;
-        align-items: center; /* Center the content */
+    body {
+        padding-top: 130px; /* Adjust for new header height */
     }
 
-    .header-top {
-        display: flex;
+    .main-header {
+        flex-wrap: wrap; /* Allow items to wrap */
         justify-content: space-between;
-        width: 100%;
         align-items: center;
     }
 
-    .header-bottom {
-        width: 100%;
-        display: flex;
-        justify-content: center; /* Center the nav */
+    .main-header nav {
+        order: 1; /* Move nav to the end */
+        flex-basis: 100%; /* Take full width to force a new line */
         margin-top: 10px;
+        justify-content: center;
+        display: flex;
+    }
+    
+    .main-header nav a {
+        margin: 0 10px; /* Adjust spacing for mobile nav links */
     }
 
     .hero-main { flex-direction: column; text-align: center; }
     .brand-name { font-size: 3rem; }
     .section-container { flex-direction: column; gap: 40px; }
     .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .price .cop { font-size: 1.5rem; }
 }
 
 /* Contenedor General de Servicios */
@@ -469,10 +473,7 @@ footer {
     color: #c5a059;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    .price .cop { font-size: 1.5rem; }
-}
+
 
 /* Language Switcher */
 .language-switcher {

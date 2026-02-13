@@ -219,19 +219,19 @@ window.addEventListener("load", () => {
     // Mostrar marca cuando la tijera va por la mitad
     setTimeout(() => {
         brand.classList.add("show-brand");
-    }, 800);
+    }, 1200);
 
     // Abrir cortinas
     setTimeout(() => {
         leftCurtain.classList.add("open-left");
         rightCurtain.classList.add("open-right");
-    }, 1500);
+    }, 2200);
 
     // Quitar overlay
     setTimeout(() => {
         overlay.remove();
         hero.classList.add("show");
-    }, 2200);
+    }, 3200);
 
 });
 

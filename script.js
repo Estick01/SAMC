@@ -39,6 +39,76 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Set default language
     setLanguage('es');
+
+    const modal = document.getElementById("serviceModal");
+    const modalTitle = document.getElementById("modalServiceTitle");
+    const confirmBtn = document.getElementById("confirmBooking");
+    const closeModal = document.querySelector(".close-modal");
+
+    let selectedService = "";
+    let selectedExtras = [];
+
+    function openModal() {
+        modal.classList.add("show");
+    }
+
+    function closeModalFunc() {
+        modal.classList.remove("show");
+    }
+
+    // Abrir modal al hacer click en servicio
+    document.querySelectorAll(".service-card").forEach(card => {
+        card.addEventListener("click", function () {
+            selectedService = this.querySelector("h3").innerText;
+            modalTitle.innerText = "Agendar: " + selectedService;
+            selectedExtras = [];
+
+            document.querySelectorAll(".extra-option").forEach(opt => {
+                opt.classList.remove("active");
+            });
+
+            openModal();
+        });
+    });
+
+    // Selección múltiple
+    document.querySelectorAll(".extra-option").forEach(option => {
+        option.addEventListener("click", function () {
+            const name = this.dataset.name;
+
+            this.classList.toggle("active");
+
+            if (selectedExtras.includes(name)) {
+                selectedExtras = selectedExtras.filter(e => e !== name);
+            } else {
+                selectedExtras.push(name);
+            }
+        });
+    });
+
+    // Cerrar modal
+    closeModal.addEventListener("click", closeModalFunc);
+
+    window.addEventListener("click", function (e) {
+        if (e.target === modal) {
+            closeModalFunc();
+        }
+    });
+
+    // Confirmar cita
+    confirmBtn.addEventListener("click", function () {
+
+        let message = `Hola, quiero agendar una cita para ${selectedService}`;
+
+        if (selectedExtras.length > 0) {
+            message += ` y agregar los siguientes adicionales: ${selectedExtras.join(", ")}`;
+        }
+
+        const phone = "573173054836";
+        const whatsappURL = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+
+        window.open(whatsappURL, "_blank");
+    });
 });
 
 const slider = document.querySelector('.video-slider');
@@ -127,80 +197,6 @@ const observer = new IntersectionObserver((entries) => {
 
 observer.observe(document.querySelector('#videos'));
 
-
-document.addEventListener("DOMContentLoaded", function () {
-
-    const modal = document.getElementById("serviceModal");
-    const modalTitle = document.getElementById("modalServiceTitle");
-    const confirmBtn = document.getElementById("confirmBooking");
-    const closeModal = document.querySelector(".close-modal");
-
-    let selectedService = "";
-    let selectedExtras = [];
-
-    function openModal() {
-        modal.classList.add("show");
-    }
-
-    function closeModalFunc() {
-        modal.classList.remove("show");
-    }
-
-    // Abrir modal al hacer click en servicio
-    document.querySelectorAll(".service-card").forEach(card => {
-        card.addEventListener("click", function () {
-            selectedService = this.querySelector("h3").innerText;
-            modalTitle.innerText = "Agendar: " + selectedService;
-            selectedExtras = [];
-
-            document.querySelectorAll(".extra-option").forEach(opt => {
-                opt.classList.remove("active");
-            });
-
-            openModal();
-        });
-    });
-
-    // Selección múltiple
-    document.querySelectorAll(".extra-option").forEach(option => {
-        option.addEventListener("click", function () {
-            const name = this.dataset.name;
-
-            this.classList.toggle("active");
-
-            if (selectedExtras.includes(name)) {
-                selectedExtras = selectedExtras.filter(e => e !== name);
-            } else {
-                selectedExtras.push(name);
-            }
-        });
-    });
-
-    // Cerrar modal
-    closeModal.addEventListener("click", closeModalFunc);
-
-    window.addEventListener("click", function (e) {
-        if (e.target === modal) {
-            closeModalFunc();
-        }
-    });
-
-    // Confirmar cita
-    confirmBtn.addEventListener("click", function () {
-
-        let message = `Hola, quiero agendar una cita para ${selectedService}`;
-
-        if (selectedExtras.length > 0) {
-            message += ` y agregar los siguientes adicionales: ${selectedExtras.join(", ")}`;
-        }
-
-        const phone = "573173054836";
-        const whatsappURL = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-
-        window.open(whatsappURL, "_blank");
-    });
-
-});
 function openModal() {
     modal.classList.add("show");
 }
@@ -219,20 +215,42 @@ window.addEventListener("load", () => {
     // Mostrar marca cuando la tijera va por la mitad
     setTimeout(() => {
         brand.classList.add("show-brand");
-    }, 1200);
+    }, 1500);
 
     // Abrir cortinas
     setTimeout(() => {
         leftCurtain.classList.add("open-left");
         rightCurtain.classList.add("open-right");
-    }, 2200);
+    }, 3000);
 
     // Quitar overlay
     setTimeout(() => {
         overlay.remove();
         hero.classList.add("show");
-    }, 3200);
+    }, 4000);
 
 });
 
+// Image Modal
+const imageModal = document.getElementById("imageModal");
+const modalImage = document.getElementById("modalImage");
+const galleryImages = document.querySelectorAll(".gallery-image");
+const closeImageModal = document.querySelector(".close-image-modal");
+
+galleryImages.forEach(image => {
+    image.addEventListener("click", () => {
+        imageModal.style.display = "block";
+        modalImage.src = image.src;
+    });
+});
+
+closeImageModal.addEventListener("click", () => {
+    imageModal.style.display = "none";
+});
+
+imageModal.addEventListener("click", (e) => {
+    if (e.target === imageModal) {
+        imageModal.style.display = "none";
+    }
+});
 

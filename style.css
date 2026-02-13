@@ -69,11 +69,19 @@ h1, h2, h3 { font-family: 'Oswald', sans-serif; text-transform: uppercase; lette
 
 .hero-content { flex: 1; margin-top: 20px; width: 100%; }
 
+.brand-name {
+    font-size: 5rem;
+    line-height: 0.9;
+    margin-bottom: 25px;
+    text-shadow: 
+        0 0 20px rgba(0,0,0,0.8),
+        0 10px 40px rgba(0,0,0,0.9);
+}
+
 .tagline { color: var(--gold); font-size: 0.8rem; letter-spacing: 5px; display: block; margin-bottom: 15px; }
 
-.brand-name { font-size: 5rem; line-height: 0.9; margin-bottom: 25px; }
 
-.hero-description { color: var(--gray-text); max-width: 400px; margin-bottom: 40px; font-weight: 300; }
+.hero-description { color: var(--gray-text); max-width: 400px; margin-bottom: 40px; font-weight: 300;      color: #e0e0e0; text-shadow: 0 5px 20px rgba(0,0,0,0.9); }
 
 .btn-primary {
     background: transparent;
@@ -174,7 +182,7 @@ h1, h2, h3 { font-family: 'Oswald', sans-serif; text-transform: uppercase; lette
     gap: 15px;
 }
 
-.grid-item img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.6); transition: 0.5s; }
+.grid-item img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.6); transition: 0.5s; cursor: pointer; }
 .grid-item:hover img { filter: brightness(1); }
 
 .tall { grid-row: span 2; }
@@ -244,7 +252,7 @@ h1, h2, h3 { font-family: 'Oswald', sans-serif; text-transform: uppercase; lette
 
 /* Footer */
 footer {
-    padding: 80px 6%;
+    padding: 20px 6% 80px 6%;
     background: var(--dark-soft);
     text-align: center;
 }
@@ -294,6 +302,25 @@ footer {
 
 /* Mobile */
 @media (max-width: 768px) {
+    .main-header {
+        flex-direction: column;
+        align-items: center; /* Center the content */
+    }
+
+    .header-top {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        align-items: center;
+    }
+
+    .header-bottom {
+        width: 100%;
+        display: flex;
+        justify-content: center; /* Center the nav */
+        margin-top: 10px;
+    }
+
     .hero-main { flex-direction: column; text-align: center; }
     .brand-name { font-size: 3rem; }
     .section-container { flex-direction: column; gap: 40px; }
@@ -578,18 +605,6 @@ footer {
     right: 0;
 }
 
-/* Tijeras */
-.scissor-icon {
-    position: absolute;
-    top: 50%;
-    left: -100px;
-    transform: translateY(-50%);
-    font-size: 60px;
-    color: gold;
-    z-index: 3;
-    animation: moveScissors 2s ease forwards;
-}
-
 /* Marca */
 .intro-brand {
     position: absolute;
@@ -609,11 +624,6 @@ footer {
 }
 
 /* Animaciones */
-
-@keyframes moveScissors {
-    0% { left: -100px; }
-    100% { left: 110%; }
-}
 
 .show-brand {
     animation: showBrand 0.6s ease forwards;
@@ -709,4 +719,54 @@ footer {
 @keyframes growCut {
     from { height: 0%; }
     to { height: 100%; }
+}
+
+/* Image Modal */
+.image-modal {
+    display: none;
+    position: fixed;
+    z-index: 1001; /* Higher than the header */
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.9);
+}
+
+.image-modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+
+.close-image-modal {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.close-image-modal:hover,
+.close-image-modal:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Animation */
+.image-modal-content {
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@keyframes zoom {
+    from {transform:scale(0)}
+    to {transform:scale(1)}
 }

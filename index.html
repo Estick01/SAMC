@@ -15,15 +15,19 @@
 <body>
 
     <header class="main-header">
-        <div class="logo">SAMC<span>.</span></div>
-        <nav>
-            <a href="#services" data-i18n="nav_services">SERVICES</a>
-            <a href="#experience" data-i18n="nav_experience">EXPERIENCE</a>
-            <a href="#gallery" data-i18n="nav_gallery">GALLERY</a>
-        </nav>
-        <div class="language-switcher">
-            <button id="es-btn">ES</button>
-            <button id="en-btn">EN</button>
+        <div class="header-top">
+            <div class="logo">SAMC<span>.</span></div>
+            <div class="language-switcher">
+                <button id="es-btn">ES</button>
+                <button id="en-btn">EN</button>
+            </div>
+        </div>
+        <div class="header-bottom">
+            <nav>
+                <a href="#services" data-i18n="nav_services">SERVICES</a>
+                <a href="#experience" data-i18n="nav_experience">EXPERIENCE</a>
+                <a href="#gallery" data-i18n="nav_gallery">GALLERY</a>
+            </nav>
         </div>
     </header>
 
@@ -211,10 +215,12 @@
 
     <section id="gallery" class="gallery">
         <div class="gallery-grid">
-            <div class="grid-item tall"><img src="img/cliente1.jpg" alt="1"></div>
-            <div class="grid-item"><img src="img/cliente2.jpg" alt="2"></div>
-            <div class="grid-item"><img src="https://i.ibb.co/wYj3JFY/pexels-photo-3149836.jpg" alt="3"></div>
-            <div class="grid-item wide"><img src="https://i.ibb.co/C9H8Q3w/pexels-photo-2061820.jpg" alt="4"></div>
+            <div class="grid-item tall"><img src="img/cliente1.jpg" alt="1" class="gallery-image"></div>
+            <div class="grid-item"><img src="img/cliente2.jpg" alt="2" class="gallery-image"></div>
+            <div class="grid-item"><img src="https://i.ibb.co/wYj3JFY/pexels-photo-3149836.jpg" alt="3"
+                    class="gallery-image"></div>
+            <div class="grid-item wide"><img src="https://i.ibb.co/C9H8Q3w/pexels-photo-2061820.jpg" alt="4"
+                    class="gallery-image"></div>
         </div>
     </section>
 
@@ -267,9 +273,15 @@
         </div>
     </footer>
 
-    <a href="https://api.whatsapp.com/send/?phone=573173054836&text=Hola%2C+quiero+agendar+una+cita+para+un+corte+con+SAMC+Barber+%EF%BF%BD&type=phone_number&app_absent=0" class="whatsapp-fixed" target="_blank">
+    <a href="https://api.whatsapp.com/send/?phone=573173054836&text=Hola%2C+quiero+agendar+una+cita+para+un+corte+con+SAMC+Barber+%EF%BF%BD&type=phone_number&app_absent=0"
+        class="whatsapp-fixed" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
+
+    <div id="imageModal" class="image-modal">
+        <span class="close-image-modal">&times;</span>
+        <img class="image-modal-content" id="modalImage">
+    </div>
 
     <script src="i18n.js"></script>
     <script src="script.js"></script>

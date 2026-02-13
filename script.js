@@ -59,7 +59,7 @@ function updateSlider() {
     videos.forEach((video, index) => {
         video.pause();
         if (index === currentIndex) {
-            video.play().catch(() => {});
+            video.play().catch(() => { });
         }
     });
 }
@@ -208,3 +208,31 @@ function openModal() {
 function closeModalFunc() {
     modal.classList.remove("show");
 }
+window.addEventListener("load", () => {
+
+    const brand = document.querySelector(".intro-brand");
+    const leftCurtain = document.querySelector(".curtain.left");
+    const rightCurtain = document.querySelector(".curtain.right");
+    const overlay = document.querySelector(".intro-overlay");
+    const hero = document.querySelector(".hero");
+
+    // Mostrar marca cuando la tijera va por la mitad
+    setTimeout(() => {
+        brand.classList.add("show-brand");
+    }, 800);
+
+    // Abrir cortinas
+    setTimeout(() => {
+        leftCurtain.classList.add("open-left");
+        rightCurtain.classList.add("open-right");
+    }, 1500);
+
+    // Quitar overlay
+    setTimeout(() => {
+        overlay.remove();
+        hero.classList.add("show");
+    }, 2200);
+
+});
+
+

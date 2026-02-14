@@ -67,6 +67,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 opt.classList.remove("active");
             });
 
+            // Mostrar/ocultar opción de barba
+            const barbaOption = document.getElementById('barba-option');
+            if (selectedService.includes('CORTE SENCILLO') || selectedService.includes('PREMIUM EXPERIENCE')) {
+                barbaOption.style.display = 'block';
+            } else {
+                barbaOption.style.display = 'none';
+            }
+
             openModal();
         });
     });
@@ -204,32 +212,6 @@ function openModal() {
 function closeModalFunc() {
     modal.classList.remove("show");
 }
-window.addEventListener("load", () => {
-
-    const brand = document.querySelector(".intro-brand");
-    const leftCurtain = document.querySelector(".curtain.left");
-    const rightCurtain = document.querySelector(".curtain.right");
-    const overlay = document.querySelector(".intro-overlay");
-    const hero = document.querySelector(".hero");
-
-    // Mostrar marca cuando la tijera va por la mitad
-    setTimeout(() => {
-        brand.classList.add("show-brand");
-    }, 1500);
-
-    // Abrir cortinas
-    setTimeout(() => {
-        leftCurtain.classList.add("open-left");
-        rightCurtain.classList.add("open-right");
-    }, 3000);
-
-    // Quitar overlay
-    setTimeout(() => {
-        overlay.remove();
-        hero.classList.add("show");
-    }, 4000);
-
-});
 
 // Image Modal
 const imageModal = document.getElementById("imageModal");

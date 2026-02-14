@@ -35,7 +35,13 @@ body {
 
 .logo { font-size: 1.5rem; font-weight: 700; }
 .logo span { color: var(--gold); }
-
+.sub-text-logo{
+    display: block;
+    font-size: 0.75rem;
+    color: var(--gray-text);
+    letter-spacing: 2px;
+    margin-top: 4px;
+}
 nav a {
     color: var(--white);
     text-decoration: none;

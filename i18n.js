@@ -66,7 +66,8 @@ const translations = {
     "extra_item_4_price": "$50k / $15 USD",
     "videos_title": "Videos de Nuestros Trabajos",
     "footer_author": "SANTI MUÑOZ",
-    "footer_quote": "\"La imagen correcta abre puertas que otros ni siquiera ven.\""
+    "footer_quote": "\"La imagen correcta abre puertas que otros ni siquiera ven.\"",
+    "videos_title": "Videos de Nuestros Trabajos"
   },
   "en": {
     "nav_services": "SERVICES",
@@ -135,6 +136,7 @@ const translations = {
     "extra_item_4_price": "$50k / $15 USD",
     "videos_title": "Videos of Our Work",
     "footer_author": "SANTI MUÑOZ",
-    "footer_quote": "\"The right image opens doors that others don't even see.\""
+    "footer_quote": "\"The right image opens doors that others don't even see.\"",
+    "videos_title": "Videos of Our Work"
   }
 };

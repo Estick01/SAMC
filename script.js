@@ -123,12 +123,100 @@ const slider = document.querySelector('.video-slider');
 const track = document.querySelector('.slider-track');
 const slides = document.querySelectorAll('.slide');
 const videos = document.querySelectorAll('video');
+const prevBtn = document.querySelector('.slider-btn.prev');
+const nextBtn = document.querySelector('.slider-btn.next');
 
 let currentIndex = 0;
 let startX = 0;
 let isDragging = false;
 let currentTranslate = 0;
 let prevTranslate = 0;
+
+// ---------- SLIDER BUTTON NAVIGATION ----------
+if (prevBtn && nextBtn) {
+    prevBtn.addEventListener('click', () => {
+        if (currentIndex > 0) {
+            currentIndex--;
+            updateSlider();
+        }
+    });
+    
+    nextBtn.addEventListener('click', () => {
+        if (currentIndex < slides.length - 1) {
+            currentIndex++;
+            updateSlider();
+        }
+    });
+}
+
+// ---------- VIDEO LAZY LOADING WITH INTERSECTION OBSERVER ----------
+// Only load video sources when they come into view for better performance
+if ('IntersectionObserver' in window) {
+    const videoObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const video = entry.target;
+            if (entry.isIntersecting) {
+                // Load video source when visible
+                if (video.poster && !video.loaded) {
+                    video.load();
+                    video.loaded = true;
+                }
+                // Auto-play when in view (only if user hasn't manually paused)
+                if ((video.parentElement.classList.contains('active') || 
+                    slides[currentIndex].contains(video)) && !video.userPaused) {
+                    video.play().catch(() => { });
+                }
+            } else {
+                // Pause when not visible to save resources
+                video.pause();
+            }
+        });
+    }, { 
+        rootMargin: '100px',
+        threshold: 0.1 
+    });
+
+    videos.forEach(video => {
+        video.loaded = false;
+        const playOverlay = video.nextElementSibling;
+        const swipeIndicator = playOverlay ? playOverlay.nextElementSibling : null;
+        
+        // Add click event to toggle play/pause via overlay
+        if (playOverlay && playOverlay.classList.contains('play-overlay')) {
+            playOverlay.addEventListener('click', (e) => {
+                e.stopPropagation();
+                playOverlay.classList.toggle('playing');
+                if (video.userPaused) {
+                    video.userPaused = false;
+                    video.play();
+                } else {
+                    video.userPaused = true;
+                    video.pause();
+                }
+            });
+        }
+        
+        if (swipeIndicator && swipeIndicator.classList.contains('swipe-indicator')) {
+            swipeIndicator.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (currentIndex < slides.length - 1) {
+                    currentIndex++;
+                    updateSlider();
+                }
+            });
+        }
+        
+        video.addEventListener('play', () => {
+            video.classList.add('playing');
+        });
+        
+        video.addEventListener('pause', () => {
+            video.classList.remove('playing');
+        });
+        
+        videoObserver.observe(video);
+    });
+}
 
 // ---------- UPDATE SLIDER ----------
 function updateSlider() {
@@ -234,5 +322,23 @@ imageModal.addEventListener("click", (e) => {
     if (e.target === imageModal) {
         imageModal.style.display = "none";
     }
+});
+
+// ---------- SCROLL TO TOP BUTTON ----------
+const scrollTopBtn = document.getElementById('scrollTopBtn');
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+        scrollTopBtn.classList.add('visible');
+    } else {
+        scrollTopBtn.classList.remove('visible');
+    }
+});
+
+scrollTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
 });
 

@@ -1,0 +1,16 @@
+# Robots.txt for SAMC Barbers Exclusive
+# https://samcbarbers.com/
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://samcbarbers.com/sitemap.xml
+
+# Disallow admin/private areas
+Disallow: /admin/
+Disallow: /cgi-bin/
+Disallow: /private/
+
+# Crawl-delay (optional, for polite crawling)
+Crawl-delay: 1

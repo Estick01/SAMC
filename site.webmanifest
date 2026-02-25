@@ -1,0 +1,21 @@
+{
+    "name": "SAMC Barbers Exclusive",
+    "short_name": "SAMC Barbers",
+    "description": "Premium barbería privada a domicilio en Medellín",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#0a0a0a",
+    "theme_color": "#c5a059",
+    "icons": [
+        {
+            "src": "img/favicon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "img/favicon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

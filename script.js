@@ -63,6 +63,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Track Lead event for fixed floating WhatsApp button
+    const fixedWhatsAppBtn = document.getElementById('whatsapp-fixed');
+    if (fixedWhatsAppBtn) {
+        fixedWhatsAppBtn.addEventListener('click', function(e) {
+            // Check if fbq is available before firing event
+            if (typeof fbq === 'function') {
+                fbq('track', 'Lead');
+            }
+        });
+    }
+
     // Track Lead event for confirm booking button (in modal)
     const confirmBookingBtn = document.getElementById('confirmBooking');
     if (confirmBookingBtn) {

@@ -11,6 +11,7 @@
         content="barbería, corte de pelo, barba, estilismo, medellín, servicios a domicilio, barbero profesional">
     <meta name="author" content="Santi Muñoz">
     <meta name="robots" content="index, follow">
+    <meta name="facebook-domain-verification" content="ojqxy2g4td09cvw4ozv7w8tuus6q1v" />
     <link rel="canonical" href="https://samcbarbers.com/">
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -116,14 +117,11 @@
         ]
     }
     </script>
-</head>
-
-<body>
     <script>
         !function (f, b, e, v, n, t, s) {
             if (f.fbq) return; n = f.fbq = function () {
                 n.callMethod ?
-                n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
             };
             if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
             n.queue = []; t = b.createElement(e); t.async = !0;
@@ -136,7 +134,9 @@
     </script>
     <noscript><img height="1" width="1" style="display:none"
             src="https://www.facebook.com/tr?id=1016277440960039&ev=PageView&noscript=1" /></noscript>
+</head>
 
+<body>
     <header class="main-header">
         <div class="logo">SAMC<span>.</span><span class="sub-text-logo">EL BARBERO DE LA ELITE</span></div>
         <nav>
@@ -158,7 +158,8 @@
                 <h1 class="brand-name" data-i18n="hero_title">SAMC BARBERS<br>EXCLUSIVE</h1>
                 <p class="hero-description" data-i18n="hero_description">Barbería privada a domicilio diseñada para
                     hombres que comprenden que su imagen es poder.</p>
-                <a href="https://wa.me/573173054836" class="btn-primary" target="_blank" data-i18n="hero_button">AGENDAR
+                <a href="https://wa.me/573173054836" id="whatsapp-hero" class="btn-primary" target="_blank"
+                    data-i18n="hero_button">AGENDAR
                     EXPERIENCIA</a>
             </div>
 
@@ -365,12 +366,16 @@
         <div class="testimonials-grid">
             <div class="testimonial-card">
                 <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
-                <p class="testimonial-text" data-i18n="testimonial_1_text">"Definitivamente es un barbero que entiende imagen, presencia y exclusividad. Recomendado para quienes valoran un servicio serio y bien ejecutado."</p>
+                <p class="testimonial-text" data-i18n="testimonial_1_text">"Definitivamente es un barbero que entiende
+                    imagen, presencia y exclusividad. Recomendado para quienes valoran un servicio serio y bien
+                    ejecutado."</p>
                 <p class="testimonial-author" data-i18n="testimonial_1_author">- Carlos M.</p>
             </div>
             <div class="testimonial-card">
                 <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
-                <p class="testimonial-text" data-i18n="testimonial_2_text">"Desde que agendé mi primera cita con Santi, entendí que no es solo un corte, es una experiencia. La puntualidad, la asesoría personalizada y el nivel de detalle marcan completamente la diferencia."</p>
+                <p class="testimonial-text" data-i18n="testimonial_2_text">"Desde que agendé mi primera cita con Santi,
+                    entendí que no es solo un corte, es una experiencia. La puntualidad, la asesoría personalizada y el
+                    nivel de detalle marcan completamente la diferencia."</p>
                 <p class="testimonial-author" data-i18n="testimonial_2_author">- Andrés R.</p>
             </div>
             <div class="testimonial-card">
@@ -396,9 +401,12 @@
             </div>
             <div class="faq-item">
                 <h3 data-i18n="faq_question_2">¿A qué zonas de Medellín prestan servicio?</h3>
-                <p data-i18n="faq_answer_2">Prestamos servicio a domicilio en toda el área metropolitana de Medellín sin costo adicional por desplazamiento.
-                    Para ubicaciones fuera de esta zona, se aplicará una tarifa adicional determinada según la distancia.
-                    Por motivos de seguridad y calidad del servicio, no atendemos en zonas catalogadas como de alto riesgo.</p>
+                <p data-i18n="faq_answer_2">Prestamos servicio a domicilio en toda el área metropolitana de Medellín sin
+                    costo adicional por desplazamiento.
+                    Para ubicaciones fuera de esta zona, se aplicará una tarifa adicional determinada según la
+                    distancia.
+                    Por motivos de seguridad y calidad del servicio, no atendemos en zonas catalogadas como de alto
+                    riesgo.</p>
             </div>
             <div class="faq-item">
                 <h3 data-i18n="faq_question_3">¿Qué incluye el servicio a domicilio?</h3>
@@ -492,7 +500,8 @@
                 <a href="https://www.instagram.com/samc_mc/" target="_blank"><i class="fab fa-instagram"></i></a>
                 <a href="https://www.tiktok.com/@elbarberodelaelite?_r=1&_t=ZS-93u6J1wQl7s" target="_blank"><i
                         class="fab fa-tiktok"></i></a>
-                <a href="https://wa.me/573173054836" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://wa.me/573173054836" id="whatsapp-footer" target="_blank"><i
+                        class="fab fa-whatsapp"></i></a>
             </div>
         </div>
     </footer>

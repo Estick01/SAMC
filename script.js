@@ -40,6 +40,52 @@ document.addEventListener('DOMContentLoaded', () => {
     // Set default language
     setLanguage('es');
 
+    // ---------- META PIXEL LEAD TRACKING ----------
+    // Track Lead event for hero WhatsApp button
+    const heroWhatsAppBtn = document.getElementById('whatsapp-hero');
+    if (heroWhatsAppBtn) {
+        heroWhatsAppBtn.addEventListener('click', function(e) {
+            // Check if fbq is available before firing event
+            if (typeof fbq === 'function') {
+                fbq('track', 'Lead');
+            }
+        });
+    }
+
+    // Track Lead event for footer WhatsApp button
+    const footerWhatsAppBtn = document.getElementById('whatsapp-footer');
+    if (footerWhatsAppBtn) {
+        footerWhatsAppBtn.addEventListener('click', function(e) {
+            // Check if fbq is available before firing event
+            if (typeof fbq === 'function') {
+                fbq('track', 'Lead');
+            }
+        });
+    }
+
+    // Track Lead event for confirm booking button (in modal)
+    const confirmBookingBtn = document.getElementById('confirmBooking');
+    if (confirmBookingBtn) {
+        confirmBookingBtn.addEventListener('click', function() {
+
+            let message = `Hola, quiero agendar una cita para ${selectedService}`;
+
+            if (selectedExtras.length > 0) {
+                message += ` y agregar los siguientes adicionales: ${selectedExtras.join(", ")}`;
+            }
+
+            const phone = "573173054836";
+            const whatsappURL = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+
+            // Track Lead event before redirect
+            if (typeof fbq === 'function') {
+                fbq('track', 'Lead');
+            }
+
+            window.open(whatsappURL, "_blank");
+        });
+    }
+
     const modal = document.getElementById("serviceModal");
     const modalTitle = document.getElementById("modalServiceTitle");
     const confirmBtn = document.getElementById("confirmBooking");
@@ -101,21 +147,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.target === modal) {
             closeModalFunc();
         }
-    });
-
-    // Confirmar cita
-    confirmBtn.addEventListener("click", function () {
-
-        let message = `Hola, quiero agendar una cita para ${selectedService}`;
-
-        if (selectedExtras.length > 0) {
-            message += ` y agregar los siguientes adicionales: ${selectedExtras.join(", ")}`;
-        }
-
-        const phone = "573173054836";
-        const whatsappURL = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-
-        window.open(whatsappURL, "_blank");
     });
 });
 

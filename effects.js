@@ -6,6 +6,8 @@ const hasFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').m
 const INTRO_FALLBACK_MS = 3600;
 const SKIP_FADE_MS = 350;
 const HEADER_SCROLLED_AT = 40;
+const HEADER_HIDE_AFTER = 500; // header hides on scroll down only past this point
+const SCROLL_DIRECTION_TOLERANCE = 6; // px, ignores tiny jitters
 const PROGRESS_STEPS = 100; // scroll progress resolution (1% steps)
 const TILT_MAX_DEG = 6;
 const MAGNET_STRENGTH = 0.25;
@@ -229,8 +231,25 @@ function initHeaderAndScroll() {
         scrollTopBtn.style.setProperty('--progress', value);
     };
 
+    // Hide the header while scrolling down, bring it back on scroll up.
+    // The class is only written when the state flips, never per frame.
+    let lastY = window.scrollY;
+    let headerHidden = false;
+    const updateHeaderVisibility = () => {
+        const y = window.scrollY;
+        const delta = y - lastY;
+        if (Math.abs(delta) < SCROLL_DIRECTION_TOLERANCE) return;
+        const shouldHide = delta > 0 && y > HEADER_HIDE_AFTER && !nav.classList.contains('is-open');
+        if (shouldHide !== headerHidden) {
+            headerHidden = shouldHide;
+            header.classList.toggle('is-hidden', shouldHide);
+        }
+        lastY = y;
+    };
+
     const onScroll = () => {
         lastScrollAt = performance.now();
+        updateHeaderVisibility();
         const step = Math.round(Math.min(1, window.scrollY / maxScroll) * PROGRESS_STEPS);
         if (step === pendingStep) return;
         const scheduled = pendingStep !== shownStep;

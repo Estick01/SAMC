@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>document.documentElement.classList.add('js');</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>SAMC BARBERS EXCLUSIVE - Elite Grooming</title>
     <meta name="description"
         content="SAMC Barbers Exclusive - Premium barbería privada a domicilio en Medellín. Servicios de corte, barba y cuidado personal para hombres que valoran su imagen.">
@@ -11,6 +12,7 @@
         content="barbería, corte de pelo, barba, estilismo, medellín, servicios a domicilio, barbero profesional">
     <meta name="author" content="Santi Muñoz">
     <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0a0a0a">
     <meta name="facebook-domain-verification" content="ojqxy2g4td09cvw4ozv7w8tuus6q1v" />
     <link rel="canonical" href="https://samcbarbers.com/">
     <!-- Favicon -->
@@ -36,17 +38,17 @@
         content="Barbería privada a domicilio en Medellín. Servicios premium de corte, barba y cuidado personal.">
     <meta property="twitter:image" content="https://samcbarbers.com/img/SAMC1.png">
 
-    <!-- Preload critical fonts -->
+    <!-- Fonts & icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload"
-        href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;500;700&family=Playfair+Display:ital,wght@1,700&family=Roboto:wght@300;400&display=swap"
-        as="style">
-    <link rel="stylesheet" href="style.css">
     <link
-        href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;500;700&family=Playfair+Display:ital,wght@1,700&family=Roboto:wght@300;400&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Oswald:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@1,500;1,700&display=swap"
         rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+    <link rel="preload" href="img/SAMC1.png" as="image">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="components.css">
+    <link rel="stylesheet" href="effects.css">
 
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
@@ -57,7 +59,7 @@
         "description": "Barbería privada a domicilio en Medellín. Servicios premium de corte, barba y cuidado personal.",
         "url": "https://samcbarbers.com/",
         "telephone": "+573173054836",
-        "priceRange": "$",
+        "priceRange": "$$",
         "image": "https://samcbarbers.com/img/SAMC1.png",
         "address": {
             "@type": "PostalAddress",
@@ -89,25 +91,31 @@
             {
                 "@type": "Offer",
                 "name": "Corte Sencillo",
-                "price": "80000",
-                "priceCurrency": "COP"
-            },
-            {
-                "@type": "Offer",
-                "name": "Premium Experience",
                 "price": "100000",
                 "priceCurrency": "COP"
             },
             {
                 "@type": "Offer",
+                "name": "Premium Experience",
+                "price": "120000",
+                "priceCurrency": "COP"
+            },
+            {
+                "@type": "Offer",
                 "name": "Combo Exclusive",
-                "price": "130000",
+                "price": "150000",
                 "priceCurrency": "COP"
             },
             {
                 "@type": "Offer",
                 "name": "Combo Prestige",
-                "price": "160000",
+                "price": "180000",
+                "priceCurrency": "COP"
+            },
+            {
+                "@type": "Offer",
+                "name": "Diseño de Barba Premium",
+                "price": "50000",
                 "priceCurrency": "COP"
             }
         ],
@@ -174,392 +182,694 @@
     <!-- TikTok Pixel Code End -->
 </head>
 
-<body>
+<body class="is-loading">
+    <!-- ========== INTRO ========== -->
+    <div class="intro" id="intro" aria-hidden="true">
+        <div class="intro__half intro__half--top"></div>
+        <div class="intro__half intro__half--bottom"></div>
+        <div class="intro__content">
+            <svg class="intro__crown" viewBox="0 0 120 70" fill="none">
+                <path d="M10 60 L4 18 L32 40 L60 6 L88 40 L116 18 L110 60 Z" />
+                <path d="M12 66 H108" />
+                <circle cx="4" cy="18" r="3" />
+                <circle cx="60" cy="6" r="3" />
+                <circle cx="116" cy="18" r="3" />
+            </svg>
+            <div class="intro__word">
+                <span>S</span><span>A</span><span>M</span><span>C</span>
+            </div>
+            <div class="intro__sub">BARBERS EXCLUSIVE</div>
+        </div>
+        <div class="intro__line">
+            <span class="intro__line-fill"></span>
+            <svg class="intro__scissors" viewBox="0 0 48 48">
+                <g class="blade blade--a">
+                    <circle cx="8" cy="24" r="5" />
+                    <path d="M13 23 L22 23.2 L46 24 L22 25.8 L13 25 Z" />
+                </g>
+                <g class="blade blade--b">
+                    <circle cx="8" cy="24" r="5" />
+                    <path d="M13 23 L22 23.2 L46 24 L22 25.8 L13 25 Z" />
+                </g>
+                <circle class="pivot" cx="22" cy="24" r="1.6" />
+            </svg>
+        </div>
+        <button class="intro__skip" type="button">SKIP</button>
+    </div>
+
+    <!-- Ambient background (gives the glass something to blur) -->
+    <div class="ambient" aria-hidden="true">
+        <span class="orb orb--1"></span>
+        <span class="orb orb--2"></span>
+        <span class="orb orb--3"></span>
+    </div>
+    <div class="scroll-progress" aria-hidden="true"><span></span></div>
+
+    <!-- Custom scissors cursor -->
+    <div class="cursor" aria-hidden="true">
+        <svg viewBox="0 0 48 48">
+            <g class="cursor__rotor">
+                <g class="blade blade--a">
+                    <circle cx="8" cy="24" r="5" />
+                    <path d="M13 23 L22 23.2 L46 24 L22 25.8 L13 25 Z" />
+                </g>
+                <g class="blade blade--b">
+                    <circle cx="8" cy="24" r="5" />
+                    <path d="M13 23 L22 23.2 L46 24 L22 25.8 L13 25 Z" />
+                </g>
+                <circle class="pivot" cx="22" cy="24" r="1.6" />
+            </g>
+        </svg>
+    </div>
+
+    <!-- ========== HEADER ========== -->
     <header class="main-header">
-        <div class="logo">SAMC<span>.</span><span class="sub-text-logo">EL BARBERO DE LA ELITE</span></div>
-        <nav>
-            <a href="#services" data-i18n="nav_services">SERVICES</a>
-            <a href="#experience" data-i18n="nav_experience">EXPERIENCE</a>
-            <a href="#testimonials" data-i18n="nav_testimonials">TESTIMONIALS</a>
-            <a href="#videos" data-i18n="nav_videos">VIDEOS</a>
-        </nav>
-        <div class="language-switcher">
-            <button id="es-btn">ES</button>
-            <button id="en-btn">EN</button>
-        </div>
-    </header>
-
-    <section class="hero">
-        <div class="hero-main">
-            <div class="hero-content">
-                <span class="tagline" data-i18n="hero_tagline">ESTD 2024 — MEDELLÍN</span>
-                <h1 class="brand-name" data-i18n="hero_title">SAMC BARBERS<br>EXCLUSIVE</h1>
-                <p class="hero-description" data-i18n="hero_description">Barbería privada a domicilio diseñada para
-                    hombres que comprenden que su imagen es poder.</p>
-                <a href="https://wa.me/573173054836" id="whatsapp-hero" class="btn-primary" target="_blank"
-                    data-i18n="hero_button">AGENDAR
-                    EXPERIENCIA</a>
-            </div>
-
-            <div class="hero-image-container">
-                <img src="img/SAMC1.png" alt="Elite Barbering" class="img-main" loading="lazy" width="500" height="600">
-                <div class="img-decoration"></div>
-            </div>
-        </div>
-    </section>
-
-    <section id="experience" class="experience">
-        <div class="experience-header">
-            <span class="gold-line"></span>
-            <h2 data-i18n="experience_title">MÁS QUE UN CORTE, UNA DECLARACIÓN DE ESTATUS.</h2>
-        </div>
-        <div class="perks-grid">
-            <div class="perk">
-                <span>01</span>
-                <h3 data-i18n="perk_1_title">ATENCIÓN PRIVADA</h3>
-                <p data-i18n="perk_1_description">Nos enfocamos en la individualidad de cada cliente, asegurando que
-                    cada corte sea una expresión única de su estilo y personalidad.</p>
-            </div>
-            <div class="perk">
-                <span>02</span>
-                <h3 data-i18n="perk_2_title">PRECISIÓN ABSOLUTA</h3>
-                <p data-i18n="perk_2_description">fusionando arte y técnica para lograr acabados impecables que resaltan
-                    la masculinidad y sofisticación.</p>
-            </div>
-            <div class="perk">
-                <span>03</span>
-                <h3 data-i18n="perk_3_title">PUNTUALIDAD IMPECABLE</h3>
-                <p data-i18n="perk_3_description">Valoramos su tiempo tanto como usted, garantizando un servicio
-                    eficiente y de alta calidad sin demoras.</p>
-            </div>
-            <div class="perk">
-                <span>04</span>
-                <h3 data-i18n="perk_4_title">EXPERIENCIA PERSONALIZADA</h3>
-                <p data-i18n="perk_4_description">Desde la consulta inicial hasta el último detalle, cada momento está
-                    diseñado para superar sus expectativas y redefinir el lujo.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="services" class="services-catalog">
-        <div class="section-title">
-            <span class="tagline" data-i18n="services_tagline">CATÁLOGO EXCLUSIVO</span>
-            <h2 data-i18n="services_title">CARTA DE SERVICIOS</h2>
-            <p data-i18n="services_subtitle">Atención a domicilio: Comodidad, privacidad y trato personalizado.</p>
-        </div>
-
-        <div class="services-container">
-            <div class="service-card">
-                <div class="card-header">
-                    <h3 data-i18n="simple_cut_title">✂️ CORTE SENCILLO - UNA SOLA GIA</h3>
-                    <div class="price">
-                        <span class="cop" data-i18n="simple_cut_price_cop">$100.000 COP</span>
-                        <span class="usd" data-i18n="simple_cut_price_usd">$35 USD</span>
-                    </div>
+        <div class="header-pill glass">
+            <a href="#top" class="logo" aria-label="SAMC inicio">
+                <i class="fa-solid fa-crown logo__crown"></i>
+                <span class="logo__text">SAMC<span>.</span></span>
+                <span class="sub-text-logo">EL BARBERO DE LA ELITE</span>
+            </a>
+            <nav class="main-nav" id="mainNav">
+                <a href="#experience" data-i18n="nav_experience">EXPERIENCIA</a>
+                <a href="#services" data-i18n="nav_services">SERVICIOS</a>
+                <a href="#testimonials" data-i18n="nav_testimonials">TESTIMONIOS</a>
+                <a href="#videos" data-i18n="nav_videos">VIDEOS</a>
+                <a href="#faq" data-i18n="nav_faq">FAQ</a>
+            </nav>
+            <div class="header-actions">
+                <div class="language-switcher" role="group" aria-label="Idioma">
+                    <button id="es-btn" type="button" class="is-active">ES</button>
+                    <button id="en-btn" type="button">EN</button>
                 </div>
-                <p class="description" data-i18n="simple_cut_description">Ideal para quienes buscan un corte clásico e
-                    impecable sin extras.</p>
-                <ul class="features">
-                    <li data-i18n="simple_cut_feature_1">Corte a máquina y tijeras</li>
-                    <li data-i18n="simple_cut_feature_2">Peinado final profesional</li>
-                    <li data-i18n="simple_cut_feature_3">Desinfección de área</li>
-                </ul>
-                <span class="duration"><i class="far fa-clock"></i> <span data-i18n="simple_cut_duration">45 min -
-                        1h</span></span>
-            </div>
-
-            <div class="service-card featured">
-                <div class="card-header">
-                    <h3 data-i18n="premium_experience_title">💎 PREMIUM EXPERIENCE</h3>
-                    <div class="price">
-                        <span class="cop" data-i18n="premium_experience_price_cop">$120.000 COP</span>
-                        <span class="usd" data-i18n="premium_experience_price_usd">$40 USD</span>
-                    </div>
-                </div>
-                <p class="description" data-i18n="premium_experience_description">Realce total de imagen con asesoría
-                    estratégica y relajación profunda.</p>
-                <ul class="features">
-                    <li data-i18n="premium_experience_feature_1">Asesoría de imagen personalizada</li>
-                    <li data-i18n="premium_experience_feature_2">Limpieza facial revitalizante</li>
-                    <li data-i18n="premium_experience_feature_3">Masaje facial, craneal y ocular</li>
-                    <li data-i18n="premium_experience_feature_4">Pigmentación profesional</li>
-                </ul>
-                <span class="duration"><i class="far fa-clock"></i> <span data-i18n="premium_experience_duration">1h 10
-                        min</span></span>
-            </div>
-
-            <div class="service-card gold-border">
-                <div class="card-header">
-                    <h3 data-i18n="exclusive_combo_title">💎 COMBO EXCLUSIVE</h3>
-                    <div class="price">
-                        <span class="cop" data-i18n="exclusive_combo_price_cop">$150.000 COP</span>
-                        <span class="usd" data-i18n="exclusive_combo_price_usd">$50 USD</span>
-                    </div>
-                </div>
-                <p class="description" data-i18n="exclusive_combo_description">Corte Premium + Barba + Cejas. El
-                    estándar de la élite.</p>
-                <ul class="features">
-                    <li data-i18n="exclusive_combo_feature_1">Incluye todo el Corte Premium</li>
-                    <li data-i18n="exclusive_combo_feature_2">Diseño y perfilado de barba</li>
-                    <li data-i18n="exclusive_combo_feature_3">Diseño de cejas profesional</li>
-                    <li data-i18n="exclusive_combo_feature_4">Desinfección total del área</li>
-                </ul>
-                <span class="duration"><i class="far fa-clock"></i> <span data-i18n="exclusive_combo_duration">1h 20
-                        min</span></span>
-            </div>
-
-            <div class="service-card prestige">
-                <div class="card-header">
-                    <h3 data-i18n="prestige_combo_title">👑 COMBO PRESTIGE</h3>
-                    <div class="price">
-                        <span class="cop" data-i18n="prestige_combo_price_cop">$180.000 COP</span>
-                        <span class="usd" data-i18n="prestige_combo_price_usd">$60 USD</span>
-                    </div>
-                </div>
-                <p class="description" data-i18n="prestige_combo_description">El servicio definitivo. Renovación
-                    estética y cuidado de la piel.</p>
-                <ul class="features">
-                    <li data-i18n="prestige_combo_feature_1">Todo lo del Combo Exclusive</li>
-                    <li data-i18n="prestige_combo_feature_2">Mascarilla facial a elección</li>
-                    <li data-i18n="prestige_combo_feature_3">Cuidado capilar y facial profundo</li>
-                    <li data-i18n="prestige_combo_feature_4">Opción Premium: 2 mascarillas ($200k)</li>
-                </ul>
-                <span class="duration"><i class="far fa-clock"></i> <span data-i18n="prestige_combo_duration">1h 30
-                        min</span></span>
-            </div>
-        </div>
-
-        <div id="serviceModal" class="modal">
-            <div class="modal-content">
-                <span class="close-modal">&times;</span>
-                <h3 id="modalServiceTitle"></h3>
-
-                <p>¿Desea agregar detalles adicionales?</p>
-
-                <div class="extras-options">
-                    <div class="extra-option" data-name="Barba" id="barba-option">
-                        Barba -- $50k / $18 USD
-                    </div>
-                    <div class="extra-option" data-name="Cejas con Navaja">
-                        Cejas con Navaja -- $20k / $8 USD
-                    </div>
-                    <div class="extra-option" data-name="Mascarilla Puntos Negros">
-                        Mascarilla Puntos Negros -- $30k / $12 USD
-                    </div>
-                    <div class="extra-option" data-name="Mascarilla Colágeno">
-                        Mascarilla Colágeno -- $30k / $12 USD
-                    </div>
-                    <div class="extra-option" data-name="Limpieza Facial Profunda">
-                        Limpieza Facial Profunda -- $60k / $20 USD
-                    </div>
-                </div>
-
-                <button id="confirmBooking" class="btn-primary">
-                    AGENDAR CITA
+                <button class="menu-toggle" id="menuToggle" type="button" aria-label="Menú"
+                    aria-expanded="false" aria-controls="mainNav">
+                    <span></span><span></span>
                 </button>
             </div>
         </div>
-    </section>
+    </header>
 
-    <section id="beard-services" class="services-catalog">
-        <div class="section-title">
-            <span class="tagline" data-i18n="beard_services_tagline">SERVICIOS DE BARBA</span>
-            <h2 data-i18n="beard_services_title">DISEÑO Y CUIDADO DE BARBA</h2>
-            <p data-i18n="beard_services_subtitle">Define tu estilo con un servicio exclusivo para tu barba.</p>
-        </div>
-
-        <div class="services-container">
-            <div class="service-card">
-                <div class="card-header">
-                    <h3 data-i18n="premium_beard_design_title">🧔 DISEÑO DE BARBA PREMIUM</h3>
-                    <div class="price">
-                        <span class="cop" data-i18n="premium_beard_design_price_cop">$50.000 COP</span>
-                        <span class="usd" data-i18n="premium_beard_design_price_usd">$20 USD</span>
+    <main>
+        <!-- ========== HERO ========== -->
+        <section class="hero" id="top">
+            <div class="hero__bg">
+                <img src="img/SAMC1.png" alt="Santi Muñoz con el kit SAMC Barber Exclusive" width="864" height="1184"
+                    fetchpriority="high">
+            </div>
+            <div class="container hero__inner">
+                <div class="hero__content">
+                    <span class="eyebrow glass-pill" data-hero style="--d:0">
+                        <span class="live-dot"></span>
+                        <span data-i18n="hero_tagline">ESTD 2024 — MEDELLÍN</span>
+                    </span>
+                    <h1 class="hero__title" data-hero style="--d:1" data-i18n="hero_title">SAMC BARBERS<br>EXCLUSIVE</h1>
+                    <p class="hero__script" data-hero style="--d:2" data-i18n="hero_subtitle">El barbero de la élite</p>
+                    <p class="hero__description" data-hero style="--d:3" data-i18n="hero_description">Barbería privada
+                        a domicilio diseñada para hombres que comprenden que su imagen es poder.</p>
+                    <div class="hero__actions" data-hero style="--d:4">
+                        <a href="https://wa.me/573173054836" id="whatsapp-hero" class="btn btn--gold" target="_blank"
+                            rel="noopener" data-magnetic>
+                            <i class="fa-brands fa-whatsapp"></i>
+                            <span data-i18n="hero_button">AGENDAR EXPERIENCIA</span>
+                        </a>
+                        <a href="#services" class="btn btn--glass" data-magnetic>
+                            <span data-i18n="hero_button_secondary">VER SERVICIOS</span>
+                            <i class="fa-solid fa-arrow-down"></i>
+                        </a>
                     </div>
                 </div>
-                <p class="description" data-i18n="premium_beard_design_description">Un diseño meticuloso para una barba
-                    impecable y definida.</p>
-                <ul class="features">
-                    <li data-i18n="premium_beard_design_feature_1">Diseño y perfilado completo con máquina, navaja o
-                        tijera.</li>
-                    <li data-i18n="premium_beard_design_feature_2">Pigmentación profesional para resaltar contornos y
-                        definir la barba.</li>
-                    <li data-i18n="premium_beard_design_feature_3">Aplicación de productos hidratantes y refrescantes.
-                    </li>
-                    <li data-i18n="premium_beard_design_feature_4">Limpieza y desinfección del área de trabajo antes de
-                        finalizar.</li>
-                </ul>
-                <span class="duration"><i class="far fa-clock"></i> <span data-i18n="premium_beard_design_duration">20 -
-                        25 min</span></span>
+
+                <div class="hero__stats glass glass--blur" data-hero style="--d:5">
+                    <div class="stat">
+                        <strong>5.0 <i class="fa-solid fa-star"></i></strong>
+                        <span data-i18n="hero_stat_1_label">Reseñas</span>
+                    </div>
+                    <div class="stat">
+                        <strong>100%</strong>
+                        <span data-i18n="hero_stat_2_label">A domicilio</span>
+                    </div>
+                    <div class="stat">
+                        <strong>2024</strong>
+                        <span data-i18n="hero_stat_3_label">Desde</span>
+                    </div>
+                </div>
+            </div>
+            <a href="#experience" class="scroll-hint" aria-label="Bajar">
+                <span class="scroll-hint__mouse"><span></span></span>
+                <span data-i18n="scroll_hint">DESLIZA</span>
+            </a>
+        </section>
+
+        <!-- ========== MARQUEE ========== -->
+        <div class="marquee" aria-hidden="true">
+            <div class="marquee__track">
+                <div class="marquee__group">
+                    <span data-i18n="marquee_1">CORTES DE PRECISIÓN</span><i class="fa-solid fa-scissors"></i>
+                    <span data-i18n="marquee_2">DISEÑO DE BARBA</span><i class="fa-solid fa-crown"></i>
+                    <span data-i18n="marquee_3">CUIDADO FACIAL</span><i class="fa-solid fa-scissors"></i>
+                    <span data-i18n="marquee_4">SERVICIO A DOMICILIO</span><i class="fa-solid fa-crown"></i>
+                    <span>MEDELLÍN</span><i class="fa-solid fa-scissors"></i>
+                </div>
+                <div class="marquee__group">
+                    <span data-i18n="marquee_1">CORTES DE PRECISIÓN</span><i class="fa-solid fa-scissors"></i>
+                    <span data-i18n="marquee_2">DISEÑO DE BARBA</span><i class="fa-solid fa-crown"></i>
+                    <span data-i18n="marquee_3">CUIDADO FACIAL</span><i class="fa-solid fa-scissors"></i>
+                    <span data-i18n="marquee_4">SERVICIO A DOMICILIO</span><i class="fa-solid fa-crown"></i>
+                    <span>MEDELLÍN</span><i class="fa-solid fa-scissors"></i>
+                </div>
             </div>
         </div>
-    </section>
 
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials">
-        <div class="section-title">
-            <span class="tagline" data-i18n="testimonials_tagline">TESTIMONIALES</span>
-            <h2 data-i18n="testimonials_title">LO QUE DICEN NUESTROS CLIENTES</h2>
-        </div>
-        <div class="testimonials-grid">
-            <div class="testimonial-card">
-                <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
-                <p class="testimonial-text" data-i18n="testimonial_1_text">"Definitivamente es un barbero que entiende
-                    imagen, presencia y exclusividad. Recomendado para quienes valoran un servicio serio y bien
-                    ejecutado."</p>
-                <p class="testimonial-author" data-i18n="testimonial_1_author">- Carlos M.</p>
-            </div>
-            <div class="testimonial-card">
-                <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
-                <p class="testimonial-text" data-i18n="testimonial_2_text">"Desde que agendé mi primera cita con Santi,
-                    entendí que no es solo un corte, es una experiencia. La puntualidad, la asesoría personalizada y el
-                    nivel de detalle marcan completamente la diferencia."</p>
-                <p class="testimonial-author" data-i18n="testimonial_2_author">- Andrés R.</p>
-            </div>
-            <div class="testimonial-card">
-                <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
-                <p class="testimonial-text" data-i18n="testimonial_3_text">"Mi barba nunca ha lucido mejor. El diseño y
-                    la pigmentación son impecables. 100% recomendado."</p>
-                <p class="testimonial-author" data-i18n="testimonial_3_author">- Juan P.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section id="faq" class="faq">
-        <div class="section-title">
-            <span class="tagline" data-i18n="faq_tagline">PREGUNTAS FRECUENTES</span>
-            <h2 data-i18n="faq_title">¿TIENES DUDAS?</h2>
-        </div>
-        <div class="faq-container">
-            <div class="faq-item">
-                <h3 data-i18n="faq_question_1">¿Cómo agendo una cita?</h3>
-                <p data-i18n="faq_answer_1">Puedes agendar directamente por WhatsApp al +57 317 305 4836. Responde en
-                    menos de 24 horas.</p>
-            </div>
-            <div class="faq-item">
-                <h3 data-i18n="faq_question_2">¿A qué zonas de Medellín prestan servicio?</h3>
-                <p data-i18n="faq_answer_2">Prestamos servicio a domicilio en toda el área metropolitana de Medellín sin
-                    costo adicional por desplazamiento.
-                    Para ubicaciones fuera de esta zona, se aplicará una tarifa adicional determinada según la
-                    distancia.
-                    Por motivos de seguridad y calidad del servicio, no atendemos en zonas catalogadas como de alto
-                    riesgo.</p>
-            </div>
-            <div class="faq-item">
-                <h3 data-i18n="faq_question_3">¿Qué incluye el servicio a domicilio?</h3>
-                <p data-i18n="faq_answer_3">Traemos todo el equipo profesional: máquinas, tijeras, navaja, productos de
-                    cuidado y desinfección. Solo necesitas un espacio iluminado.</p>
-            </div>
-            <div class="faq-item">
-                <h3 data-i18n="faq_question_4">¿Cuánto tiempo dura cada servicio?</h3>
-                <p data-i18n="faq_answer_4">Los servicios varían entre 45 minutos y 1 hora y media dependiendo del
-                    paquete elegido.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="videos" class="videos">
-        <div class="section-title">
-            <h2 data-i18n="videos_title">Videos de Nuestros Trabajos</h2>
-        </div>
-
-        <div class="video-slider">
-            <button class="slider-btn prev" aria-label="Video anterior"><i class="fas fa-chevron-left"></i></button>
-            <button class="slider-btn next" aria-label="Siguiente video"><i class="fas fa-chevron-right"></i></button>
-            <div class="slider-track">
-
-                <div class="slide">
-                    <video loop playsinline preload="none" poster="img/SAMC.jpg">
-                        <source src="videos/video4.mp4" type="video/mp4">
-                    </video>
-                    <div class="play-overlay"><i class="fas fa-play"></i></div>
-                    <div class="swipe-indicator"><i class="fas fa-chevron-right"></i></div>
+        <!-- ========== EXPERIENCE ========== -->
+        <section id="experience" class="section experience">
+            <div class="container experience__grid">
+                <div class="experience__media" data-reveal="left">
+                    <div class="media-frame">
+                        <!-- Plays like a GIF: muted, looping, no controls -->
+                        <video class="media-loop" src="img/santi.mp4" autoplay muted loop playsinline
+                            disablepictureinpicture preload="metadata" aria-label="Santi Muñoz realizando un corte"></video>
+                    </div>
+                    <div class="media-badge glass glass--blur">
+                        <span class="media-badge__icon"><i class="fa-solid fa-scissors"></i></span>
+                        <div>
+                            <strong data-i18n="experience_badge_name">SANTI MUÑOZ</strong>
+                            <span data-i18n="experience_badge_role">Barbero profesional</span>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="slide">
-                    <video loop playsinline preload="none" poster="img/SAMC.jpg">
-                        <source src="videos/video5.mp4" type="video/mp4">
-                    </video>
-                    <div class="play-overlay"><i class="fas fa-play"></i></div>
-                    <div class="swipe-indicator"><i class="fas fa-chevron-right"></i></div>
+                <div class="experience__body">
+                    <div class="section-head section-head--left" data-reveal>
+                        <span class="eyebrow" data-i18n="experience_tagline">LA EXPERIENCIA SAMC</span>
+                        <h2 data-i18n="experience_title">MÁS QUE UN CORTE. UNA DECLARACIÓN DE ESTATUS.</h2>
+                    </div>
+                    <div class="perks-grid">
+                        <div class="perk glass" data-reveal style="--d:0" data-spotlight>
+                            <div class="perk__top">
+                                <span class="perk__icon"><i class="fa-solid fa-user-shield"></i></span>
+                                <span class="perk__num">01</span>
+                            </div>
+                            <h3 data-i18n="perk_1_title">ATENCIÓN PRIVADA</h3>
+                            <p data-i18n="perk_1_description">Nos enfocamos en la individualidad de cada cliente,
+                                asegurando que cada corte sea una expresión única de su estilo y personalidad.</p>
+                        </div>
+                        <div class="perk glass" data-reveal style="--d:1" data-spotlight>
+                            <div class="perk__top">
+                                <span class="perk__icon"><i class="fa-solid fa-crosshairs"></i></span>
+                                <span class="perk__num">02</span>
+                            </div>
+                            <h3 data-i18n="perk_2_title">PRECISIÓN ABSOLUTA</h3>
+                            <p data-i18n="perk_2_description">Fusionando arte y técnica para lograr acabados impecables
+                                que resaltan la masculinidad y sofisticación.</p>
+                        </div>
+                        <div class="perk glass" data-reveal style="--d:2" data-spotlight>
+                            <div class="perk__top">
+                                <span class="perk__icon"><i class="fa-regular fa-clock"></i></span>
+                                <span class="perk__num">03</span>
+                            </div>
+                            <h3 data-i18n="perk_3_title">PUNTUALIDAD IMPECABLE</h3>
+                            <p data-i18n="perk_3_description">Valoramos su tiempo tanto como usted, garantizando un
+                                servicio eficiente y de alta calidad sin demoras.</p>
+                        </div>
+                        <div class="perk glass" data-reveal style="--d:3" data-spotlight>
+                            <div class="perk__top">
+                                <span class="perk__icon"><i class="fa-regular fa-gem"></i></span>
+                                <span class="perk__num">04</span>
+                            </div>
+                            <h3 data-i18n="perk_4_title">EXPERIENCIA PERSONALIZADA</h3>
+                            <p data-i18n="perk_4_description">Desde la consulta inicial hasta el último detalle, cada
+                                momento está diseñado para superar sus expectativas y redefinir el lujo.</p>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="slide">
-                    <video loop playsinline preload="none" poster="img/SAMC.jpg">
-                        <source src="videos/video3.mp4" type="video/mp4">
-                    </video>
-                    <div class="play-overlay"><i class="fas fa-play"></i></div>
-                    <div class="swipe-indicator"><i class="fas fa-chevron-right"></i></div>
-                </div>
-
-                <div class="slide">
-                    <video loop playsinline preload="none" poster="img/SAMC.jpg">
-                        <source src="videos/video2.mp4" type="video/mp4">
-                    </video>
-                    <div class="play-overlay"><i class="fas fa-play"></i></div>
-                    <div class="swipe-indicator"><i class="fas fa-chevron-right"></i></div>
-                </div>
-
-                <div class="slide">
-                    <video loop playsinline preload="none" poster="img/SAMC.jpg">
-                        <source src="videos/video7.mp4" type="video/mp4">
-                    </video>
-                    <div class="play-overlay"><i class="fas fa-play"></i></div>
-                    <div class="swipe-indicator"><i class="fas fa-chevron-right"></i></div>
-                </div>
-
-                <div class="slide">
-                    <video loop playsinline preload="none" poster="img/SAMC.jpg">
-                        <source src="videos/video6.mp4" type="video/mp4">
-                    </video>
-                    <div class="play-overlay"><i class="fas fa-play"></i></div>
-                    <div class="swipe-indicator"><i class="fas fa-chevron-right"></i></div>
-                </div>
-
-                <div class="slide">
-                    <video loop playsinline preload="none" poster="img/SAMC.jpg">
-                        <source src="videos/video1.mp4" type="video/mp4">
-                    </video>
-                    <div class="play-overlay"><i class="fas fa-play"></i></div>
-                    <div class="swipe-indicator"><i class="fas fa-chevron-right"></i></div>
-                </div>
-
             </div>
-        </div>
-    </section>
+        </section>
 
+        <!-- ========== SERVICES ========== -->
+        <section id="services" class="section services-catalog">
+            <div class="container">
+                <div class="section-head" data-reveal>
+                    <span class="eyebrow" data-i18n="services_tagline">CATÁLOGO EXCLUSIVO</span>
+                    <h2 data-i18n="services_title">CARTA DE SERVICIOS</h2>
+                    <p data-i18n="services_subtitle">Atención a domicilio: Comodidad, privacidad y trato
+                        personalizado.</p>
+                </div>
 
-    <footer>
-        <div class="footer-content">
-            <h3 data-i18n="footer_author">SANTI MUÑOZ</h3>
-            <p data-i18n="footer_quote">"La imagen correcta abre puertas que otros ni siquiera ven."</p>
+                <div class="services-container">
+                    <article class="service-card glass" data-barba="true" data-reveal style="--d:0" data-tilt
+                        data-spotlight tabindex="0" role="button">
+                        <div class="card-top">
+                            <span class="card-icon"><i class="fa-solid fa-scissors"></i></span>
+                        </div>
+                        <h3 data-i18n="simple_cut_title">CORTE SENCILLO</h3>
+                        <div class="price">
+                            <span class="cop" data-i18n="simple_cut_price_cop">$100.000 COP</span>
+                            <span class="usd" data-i18n="simple_cut_price_usd">$35 USD</span>
+                        </div>
+                        <p class="description" data-i18n="simple_cut_description">Ideal para quienes buscan un corte
+                            clásico e impecable sin extras.</p>
+                        <ul class="features">
+                            <li data-i18n="simple_cut_feature_1">Corte a máquina y tijeras</li>
+                            <li data-i18n="simple_cut_feature_2">Peinado final profesional</li>
+                            <li data-i18n="simple_cut_feature_3">Desinfección de área</li>
+                        </ul>
+                        <div class="card-foot">
+                            <span class="duration"><i class="fa-regular fa-clock"></i> <span
+                                    data-i18n="simple_cut_duration">45 min - 1h</span></span>
+                            <span class="card-cta"><span data-i18n="book_now">AGENDAR</span> <i
+                                    class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </article>
+
+                    <article class="service-card glass featured" data-barba="true" data-reveal style="--d:1" data-tilt
+                        data-spotlight tabindex="0" role="button">
+                        <div class="card-top">
+                            <span class="card-icon"><i class="fa-regular fa-gem"></i></span>
+                            <span class="badge" data-i18n="most_popular_badge">MÁS POPULAR</span>
+                        </div>
+                        <h3 data-i18n="premium_experience_title">PREMIUM EXPERIENCE</h3>
+                        <div class="price">
+                            <span class="cop" data-i18n="premium_experience_price_cop">$120.000 COP</span>
+                            <span class="usd" data-i18n="premium_experience_price_usd">$40 USD</span>
+                        </div>
+                        <p class="description" data-i18n="premium_experience_description">Realce total de imagen con
+                            asesoría estratégica y relajación profunda.</p>
+                        <ul class="features">
+                            <li data-i18n="premium_experience_feature_1">Asesoría de imagen personalizada</li>
+                            <li data-i18n="premium_experience_feature_2">Limpieza facial revitalizante</li>
+                            <li data-i18n="premium_experience_feature_3">Masaje facial, craneal y ocular</li>
+                            <li data-i18n="premium_experience_feature_4">Pigmentación profesional</li>
+                        </ul>
+                        <div class="card-foot">
+                            <span class="duration"><i class="fa-regular fa-clock"></i> <span
+                                    data-i18n="premium_experience_duration">1h 10 min</span></span>
+                            <span class="card-cta"><span data-i18n="book_now">AGENDAR</span> <i
+                                    class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </article>
+
+                    <article class="service-card glass" data-reveal style="--d:2" data-tilt data-spotlight tabindex="0"
+                        role="button">
+                        <div class="card-top">
+                            <span class="card-icon"><i class="fa-solid fa-star"></i></span>
+                        </div>
+                        <h3 data-i18n="exclusive_combo_title">COMBO EXCLUSIVE</h3>
+                        <div class="price">
+                            <span class="cop" data-i18n="exclusive_combo_price_cop">$150.000 COP</span>
+                            <span class="usd" data-i18n="exclusive_combo_price_usd">$50 USD</span>
+                        </div>
+                        <p class="description" data-i18n="exclusive_combo_description">Corte Premium + Barba + Cejas.
+                            El estándar de la élite.</p>
+                        <ul class="features">
+                            <li data-i18n="exclusive_combo_feature_1">Incluye todo el Corte Premium</li>
+                            <li data-i18n="exclusive_combo_feature_2">Diseño y perfilado de barba</li>
+                            <li data-i18n="exclusive_combo_feature_3">Diseño de cejas profesional</li>
+                            <li data-i18n="exclusive_combo_feature_4">Desinfección total del área</li>
+                        </ul>
+                        <div class="card-foot">
+                            <span class="duration"><i class="fa-regular fa-clock"></i> <span
+                                    data-i18n="exclusive_combo_duration">1h 20 min</span></span>
+                            <span class="card-cta"><span data-i18n="book_now">AGENDAR</span> <i
+                                    class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </article>
+
+                    <article class="service-card glass prestige" data-reveal style="--d:3" data-tilt data-spotlight
+                        tabindex="0" role="button">
+                        <div class="card-top">
+                            <span class="card-icon"><i class="fa-solid fa-crown"></i></span>
+                            <span class="badge badge--outline">VIP</span>
+                        </div>
+                        <h3 data-i18n="prestige_combo_title">COMBO PRESTIGE</h3>
+                        <div class="price">
+                            <span class="cop" data-i18n="prestige_combo_price_cop">$180.000 COP</span>
+                            <span class="usd" data-i18n="prestige_combo_price_usd">$60 USD</span>
+                        </div>
+                        <p class="description" data-i18n="prestige_combo_description">El servicio definitivo.
+                            Renovación estética y cuidado de la piel.</p>
+                        <ul class="features">
+                            <li data-i18n="prestige_combo_feature_1">Todo lo del Combo Exclusive</li>
+                            <li data-i18n="prestige_combo_feature_2">Mascarilla facial a elección</li>
+                            <li data-i18n="prestige_combo_feature_3">Cuidado capilar y facial profundo</li>
+                            <li data-i18n="prestige_combo_feature_4">Opción Premium: 2 mascarillas ($200k)</li>
+                        </ul>
+                        <div class="card-foot">
+                            <span class="duration"><i class="fa-regular fa-clock"></i> <span
+                                    data-i18n="prestige_combo_duration">1h 30 min</span></span>
+                            <span class="card-cta"><span data-i18n="book_now">AGENDAR</span> <i
+                                    class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== BEARD ========== -->
+        <section id="beard-services" class="section beard">
+            <div class="container">
+                <div class="section-head" data-reveal>
+                    <span class="eyebrow" data-i18n="beard_services_tagline">SERVICIOS DE BARBA</span>
+                    <h2 data-i18n="beard_services_title">DISEÑO Y CUIDADO DE BARBA</h2>
+                    <p data-i18n="beard_services_subtitle">Define tu estilo con un servicio exclusivo para tu barba.</p>
+                </div>
+
+                <article class="service-card service-card--wide glass" data-reveal data-spotlight tabindex="0"
+                    role="button">
+                    <div class="wide__left">
+                        <div class="card-top">
+                            <span class="card-icon card-icon--lg"><i class="fa-solid fa-user-tie"></i></span>
+                        </div>
+                        <h3 data-i18n="premium_beard_design_title">DISEÑO DE BARBA PREMIUM</h3>
+                        <div class="price">
+                            <span class="cop" data-i18n="premium_beard_design_price_cop">$50.000 COP</span>
+                            <span class="usd" data-i18n="premium_beard_design_price_usd">$20 USD</span>
+                        </div>
+                        <p class="description" data-i18n="premium_beard_design_description">Un diseño meticuloso para
+                            una barba impecable y definida.</p>
+                    </div>
+                    <div class="wide__right">
+                        <ul class="features">
+                            <li data-i18n="premium_beard_design_feature_1">Diseño y perfilado completo con máquina,
+                                navaja o tijera.</li>
+                            <li data-i18n="premium_beard_design_feature_2">Pigmentación profesional para resaltar
+                                contornos y definir la barba.</li>
+                            <li data-i18n="premium_beard_design_feature_3">Aplicación de productos hidratantes y
+                                refrescantes.</li>
+                            <li data-i18n="premium_beard_design_feature_4">Limpieza y desinfección del área de trabajo
+                                antes de finalizar.</li>
+                        </ul>
+                        <div class="card-foot">
+                            <span class="duration"><i class="fa-regular fa-clock"></i> <span
+                                    data-i18n="premium_beard_design_duration">20 - 25 min</span></span>
+                            <span class="card-cta"><span data-i18n="book_now">AGENDAR</span> <i
+                                    class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- ========== TESTIMONIALS ========== -->
+        <section id="testimonials" class="section testimonials">
+            <div class="container">
+                <div class="section-head" data-reveal>
+                    <span class="eyebrow" data-i18n="testimonials_tagline">TESTIMONIOS</span>
+                    <h2 data-i18n="testimonials_title">LO QUE DICEN NUESTROS CLIENTES</h2>
+                </div>
+                <div class="testimonials-layout">
+                    <figure class="testimonial-photo" data-reveal="left">
+                        <img src="img/cliente2.jpg" alt="Santi Muñoz junto a un cliente en Medellín" loading="lazy"
+                            width="1536" height="2048" class="gallery-image">
+                        <figcaption class="glass glass--blur">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span data-i18n="testimonials_photo_caption">Servicio a domicilio · Medellín</span>
+                        </figcaption>
+                    </figure>
+                    <div class="testimonials-grid">
+                        <blockquote class="testimonial-card glass" data-reveal style="--d:0" data-spotlight>
+                            <div class="testimonial-stars"><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                            <p class="testimonial-text" data-i18n="testimonial_1_text">"Definitivamente es un barbero
+                                que entiende imagen, presencia y exclusividad."</p>
+                            <footer class="testimonial-author">
+                                <span class="avatar">C</span>
+                                <span data-i18n="testimonial_1_author">- Carlos M.</span>
+                            </footer>
+                        </blockquote>
+                        <blockquote class="testimonial-card glass" data-reveal style="--d:1" data-spotlight>
+                            <div class="testimonial-stars"><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                            <p class="testimonial-text" data-i18n="testimonial_2_text">"Desde que agendé mi primera cita
+                                con Santi, entendí que no es solo un corte, es una experiencia."</p>
+                            <footer class="testimonial-author">
+                                <span class="avatar">A</span>
+                                <span data-i18n="testimonial_2_author">- Andrés R.</span>
+                            </footer>
+                        </blockquote>
+                        <blockquote class="testimonial-card glass" data-reveal style="--d:2" data-spotlight>
+                            <div class="testimonial-stars"><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                            <p class="testimonial-text" data-i18n="testimonial_3_text">"Mi barba nunca ha lucido mejor.
+                                El diseño y la pigmentación son impecables. 100% recomendado."</p>
+                            <footer class="testimonial-author">
+                                <span class="avatar">J</span>
+                                <span data-i18n="testimonial_3_author">- Juan P.</span>
+                            </footer>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== VIDEOS ========== -->
+        <section id="videos" class="section videos">
+            <div class="container videos__grid">
+                <div class="videos__text" data-reveal="left">
+                    <span class="eyebrow" data-i18n="videos_tagline">PORTAFOLIO</span>
+                    <h2 data-i18n="videos_title">Videos de Nuestros Trabajos</h2>
+                    <p data-i18n="videos_text">Cada corte cuenta una historia. Mira el detalle, la precisión y el
+                        resultado final.</p>
+                    <div class="slider-dots" role="tablist" aria-label="Videos"></div>
+                    <a href="https://www.tiktok.com/@elbarberodelaelite" target="_blank" rel="noopener"
+                        class="btn btn--glass" data-magnetic>
+                        <i class="fa-brands fa-tiktok"></i>
+                        <span data-i18n="videos_button">VER MÁS EN TIKTOK</span>
+                    </a>
+                </div>
+
+                <div class="phone" data-reveal>
+                    <div class="phone__frame">
+                        <span class="phone__island"></span>
+                        <button class="sound-toggle" type="button" aria-label="Activar sonido" aria-pressed="false">
+                            <i class="fa-solid fa-volume-xmark"></i>
+                        </button>
+                        <div class="video-slider">
+                            <button class="slider-btn prev" type="button" aria-label="Video anterior"><i
+                                    class="fa-solid fa-chevron-left"></i></button>
+                            <button class="slider-btn next" type="button" aria-label="Siguiente video"><i
+                                    class="fa-solid fa-chevron-right"></i></button>
+                            <div class="slider-track">
+                                <div class="slide">
+                                    <video loop muted playsinline preload="none" poster="img/SAMC.jpg">
+                                        <source src="videos/video4.mp4" type="video/mp4">
+                                    </video>
+                                    <div class="play-overlay"><i class="fa-solid fa-play"></i></div>
+                                    <div class="swipe-indicator"><i class="fa-solid fa-chevron-right"></i></div>
+                                </div>
+                                <div class="slide">
+                                    <video loop muted playsinline preload="none" poster="img/SAMC.jpg">
+                                        <source src="videos/video5.mp4" type="video/mp4">
+                                    </video>
+                                    <div class="play-overlay"><i class="fa-solid fa-play"></i></div>
+                                    <div class="swipe-indicator"><i class="fa-solid fa-chevron-right"></i></div>
+                                </div>
+                                <div class="slide">
+                                    <video loop muted playsinline preload="none" poster="img/SAMC.jpg">
+                                        <source src="videos/video3.mp4" type="video/mp4">
+                                    </video>
+                                    <div class="play-overlay"><i class="fa-solid fa-play"></i></div>
+                                    <div class="swipe-indicator"><i class="fa-solid fa-chevron-right"></i></div>
+                                </div>
+                                <div class="slide">
+                                    <video loop muted playsinline preload="none" poster="img/SAMC.jpg">
+                                        <source src="videos/video2.mp4" type="video/mp4">
+                                    </video>
+                                    <div class="play-overlay"><i class="fa-solid fa-play"></i></div>
+                                    <div class="swipe-indicator"><i class="fa-solid fa-chevron-right"></i></div>
+                                </div>
+                                <div class="slide">
+                                    <video loop muted playsinline preload="none" poster="img/SAMC.jpg">
+                                        <source src="videos/video7.mp4" type="video/mp4">
+                                    </video>
+                                    <div class="play-overlay"><i class="fa-solid fa-play"></i></div>
+                                    <div class="swipe-indicator"><i class="fa-solid fa-chevron-right"></i></div>
+                                </div>
+                                <div class="slide">
+                                    <video loop muted playsinline preload="none" poster="img/SAMC.jpg">
+                                        <source src="videos/video6.mp4" type="video/mp4">
+                                    </video>
+                                    <div class="play-overlay"><i class="fa-solid fa-play"></i></div>
+                                    <div class="swipe-indicator"><i class="fa-solid fa-chevron-right"></i></div>
+                                </div>
+                                <div class="slide">
+                                    <video loop muted playsinline preload="none" poster="img/SAMC.jpg">
+                                        <source src="videos/video1.mp4" type="video/mp4">
+                                    </video>
+                                    <div class="play-overlay"><i class="fa-solid fa-play"></i></div>
+                                    <div class="swipe-indicator"><i class="fa-solid fa-chevron-right"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="phone__glow"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== FAQ ========== -->
+        <section id="faq" class="section faq">
+            <div class="container container--narrow">
+                <div class="section-head" data-reveal>
+                    <span class="eyebrow" data-i18n="faq_tagline">PREGUNTAS FRECUENTES</span>
+                    <h2 data-i18n="faq_title">¿TIENES DUDAS?</h2>
+                </div>
+                <div class="faq-container">
+                    <details class="faq-item glass" data-reveal style="--d:0">
+                        <summary>
+                            <h3 data-i18n="faq_question_1">¿Cómo agendo una cita?</h3>
+                            <span class="faq-icon"></span>
+                        </summary>
+                        <div class="faq-body">
+                            <p data-i18n="faq_answer_1">Puedes agendar directamente por WhatsApp al +57 317 305 4836.
+                            </p>
+                        </div>
+                    </details>
+                    <details class="faq-item glass" data-reveal style="--d:1">
+                        <summary>
+                            <h3 data-i18n="faq_question_2">¿A qué zonas de Medellín prestan servicio?</h3>
+                            <span class="faq-icon"></span>
+                        </summary>
+                        <div class="faq-body">
+                            <p data-i18n="faq_answer_2">Prestamos servicio a domicilio en toda el área metropolitana de
+                                Medellín.</p>
+                        </div>
+                    </details>
+                    <details class="faq-item glass" data-reveal style="--d:2">
+                        <summary>
+                            <h3 data-i18n="faq_question_3">¿Qué incluye el servicio a domicilio?</h3>
+                            <span class="faq-icon"></span>
+                        </summary>
+                        <div class="faq-body">
+                            <p data-i18n="faq_answer_3">Traemos todo el equipo profesional.</p>
+                        </div>
+                    </details>
+                    <details class="faq-item glass" data-reveal style="--d:3">
+                        <summary>
+                            <h3 data-i18n="faq_question_4">¿Cuánto tiempo dura cada servicio?</h3>
+                            <span class="faq-icon"></span>
+                        </summary>
+                        <div class="faq-body">
+                            <p data-i18n="faq_answer_4">Los servicios varían entre 45 minutos y 1 hora y media.</p>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== CTA ========== -->
+        <section class="section cta">
+            <div class="container">
+                <div class="cta__panel glass" data-reveal data-spotlight>
+                    <i class="fa-solid fa-crown cta__crown"></i>
+                    <span class="eyebrow" data-i18n="cta_tagline">TU PRÓXIMA CITA</span>
+                    <h2 data-i18n="cta_title">TU IMAGEN ES TU CARTA DE PRESENTACIÓN</h2>
+                    <p data-i18n="cta_text">Agenda hoy y vive una experiencia de barbería privada en la comodidad de tu
+                        hogar.</p>
+                    <a href="https://wa.me/573173054836" id="whatsapp-cta" class="btn btn--gold btn--lg"
+                        target="_blank" rel="noopener" data-magnetic>
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <span data-i18n="cta_button">AGENDAR POR WHATSAPP</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <i class="fa-solid fa-crown"></i>
+                <h3 data-i18n="footer_author">SANTI MUÑOZ</h3>
+                <p data-i18n="footer_quote">"La imagen correcta abre puertas que otros ni siquiera ven."</p>
+            </div>
             <div class="socials">
-                <a href="https://www.instagram.com/samc_mc/" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.tiktok.com/@elbarberodelaelite?_r=1&_t=ZS-93u6J1wQl7s" target="_blank"><i
-                        class="fab fa-tiktok"></i></a>
-                <a href="https://wa.me/573173054836" id="whatsapp-footer" target="_blank"><i
-                        class="fab fa-whatsapp"></i></a>
+                <a href="https://www.instagram.com/samc_mc/" target="_blank" rel="noopener" aria-label="Instagram"
+                    class="glass"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@elbarberodelaelite?_r=1&_t=ZS-93u6J1wQl7s" target="_blank"
+                    rel="noopener" aria-label="TikTok" class="glass"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="https://wa.me/573173054836" id="whatsapp-footer" target="_blank" rel="noopener"
+                    aria-label="WhatsApp" class="glass"><i class="fa-brands fa-whatsapp"></i></a>
             </div>
+            <p class="footer-legal">© <span id="year">2026</span> SAMC Barbers Exclusive · Medellín. <span
+                    data-i18n="footer_rights">Todos los derechos reservados.</span></p>
         </div>
     </footer>
 
-    <a href="https://api.whatsapp.com/send/?phone=573173054836&text=Hola%2C+quiero+agendar+una+cita+para+un+corte+con+SAMC+Barber+%EF%BF%BD&type=phone_number&app_absent=0"
-        id="whatsapp-fixed" class="whatsapp-fixed" target="_blank">
-        <i class="fab fa-whatsapp"></i>
+    <!-- Floating actions -->
+    <a href="https://api.whatsapp.com/send/?phone=573173054836&text=Hola%2C+quiero+agendar+una+cita+para+un+corte+con+SAMC+Barber&type=phone_number&app_absent=0"
+        id="whatsapp-fixed" class="whatsapp-fixed" target="_blank" rel="noopener" aria-label="WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
     </a>
 
-    <button id="scrollTopBtn" class="scroll-top-btn" aria-label="Volver arriba">
-        <i class="fas fa-chevron-up"></i>
+    <button id="scrollTopBtn" class="scroll-top-btn glass glass--blur" type="button" aria-label="Volver arriba">
+        <svg class="scroll-top-ring" viewBox="0 0 48 48">
+            <circle cx="24" cy="24" r="22" />
+        </svg>
+        <i class="fa-solid fa-chevron-up"></i>
     </button>
 
+    <!-- Booking modal -->
+    <div id="serviceModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalServiceTitle">
+        <div class="modal-content glass">
+            <span class="modal-grabber"></span>
+            <button class="close-modal" type="button" aria-label="Cerrar">&times;</button>
+            <span class="eyebrow" data-i18n="modal_tagline">RESERVA</span>
+            <h3 id="modalServiceTitle"></h3>
+            <p class="modal-question" data-i18n="modal_question">¿Deseas agregar detalles adicionales?</p>
+
+            <div class="extras-options">
+                <div class="extra-option" data-name="Barba" id="barba-option" role="checkbox" aria-checked="false"
+                    tabindex="0">
+                    <span class="extra-check"><i class="fa-solid fa-check"></i></span>
+                    <span class="extra-name" data-i18n="extra_barba_name">Barba</span>
+                    <span class="extra-price" data-i18n="extra_barba_price">$50k / $18 USD</span>
+                </div>
+                <div class="extra-option" data-name="Cejas con Navaja" role="checkbox" aria-checked="false"
+                    tabindex="0">
+                    <span class="extra-check"><i class="fa-solid fa-check"></i></span>
+                    <span class="extra-name" data-i18n="extra_item_1_name">Cejas con Navaja</span>
+                    <span class="extra-price" data-i18n="extra_item_1_price">$20k / $8 USD</span>
+                </div>
+                <div class="extra-option" data-name="Mascarilla Puntos Negros" role="checkbox" aria-checked="false"
+                    tabindex="0">
+                    <span class="extra-check"><i class="fa-solid fa-check"></i></span>
+                    <span class="extra-name" data-i18n="extra_item_2_name">Mascarilla Puntos Negros</span>
+                    <span class="extra-price" data-i18n="extra_item_2_price">$30k / $12 USD</span>
+                </div>
+                <div class="extra-option" data-name="Mascarilla Colágeno" role="checkbox" aria-checked="false"
+                    tabindex="0">
+                    <span class="extra-check"><i class="fa-solid fa-check"></i></span>
+                    <span class="extra-name" data-i18n="extra_item_3_name">Mascarilla Colágeno</span>
+                    <span class="extra-price" data-i18n="extra_item_3_price">$30k / $12 USD</span>
+                </div>
+                <div class="extra-option" data-name="Limpieza Facial Profunda" role="checkbox" aria-checked="false"
+                    tabindex="0">
+                    <span class="extra-check"><i class="fa-solid fa-check"></i></span>
+                    <span class="extra-name" data-i18n="extra_item_4_name">Limpieza Facial Profunda</span>
+                    <span class="extra-price" data-i18n="extra_item_4_price">$60k / $20 USD</span>
+                </div>
+            </div>
+
+            <button id="confirmBooking" class="btn btn--gold btn--block" type="button">
+                <i class="fa-brands fa-whatsapp"></i>
+                <span data-i18n="modal_confirm">AGENDAR POR WHATSAPP</span>
+            </button>
+        </div>
+    </div>
+
     <div id="imageModal" class="image-modal">
-        <span class="close-image-modal">&times;</span>
-        <img class="image-modal-content" id="modalImage">
+        <button class="close-image-modal" type="button" aria-label="Cerrar">&times;</button>
+        <img class="image-modal-content" id="modalImage" alt="">
     </div>
 
     <script src="i18n.js" defer></script>
     <script src="script.js" defer></script>
+    <script src="effects.js" defer></script>
 </body>
 
 </html>

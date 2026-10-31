@@ -1,386 +1,317 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const navLinks = document.querySelectorAll('nav a');
+// SAMC Barbers — core behaviour: language, booking, lead tracking, video slider.
+// Visual effects (intro, cursor, reveals, header) live in effects.js.
 
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetId = e.currentTarget.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
+const WHATSAPP_PHONE = '573173054836';
+const LANG_STORAGE_KEY = 'samc-lang';
+const DEFAULT_LANG = 'es';
 
-            if (targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    });
+let currentLang = DEFAULT_LANG;
 
-    const esBtn = document.getElementById('es-btn');
-    const enBtn = document.getElementById('en-btn');
+const t = (key) => (translations[currentLang] && translations[currentLang][key]) || '';
 
-    const setLanguage = (language) => {
-        const elements = document.querySelectorAll('[data-i18n]');
-        elements.forEach(element => {
-            const key = element.getAttribute('data-i18n');
-            if (translations[language] && translations[language][key]) {
-                if (key === 'hero_title') {
-                    element.innerHTML = translations[language][key];
-                } else {
-                    element.innerText = translations[language][key];
-                }
-            }
-        });
-        document.documentElement.lang = language;
-    };
-
-    esBtn.addEventListener('click', () => setLanguage('es'));
-    enBtn.addEventListener('click', () => setLanguage('en'));
-
-    // Set default language
-    setLanguage('es');
-
-    // ---------- META PIXEL LEAD TRACKING ----------
-    // Track Lead event for hero WhatsApp button
-    const heroWhatsAppBtn = document.getElementById('whatsapp-hero');
-    if (heroWhatsAppBtn) {
-        heroWhatsAppBtn.addEventListener('click', function(e) {
-            // Check if fbq is available before firing event
-            if (typeof fbq === 'function') {
-                fbq('track', 'Lead');
-            }
-        });
+const trackLead = () => {
+    if (typeof fbq === 'function') {
+        fbq('track', 'Lead');
     }
+};
 
-    // Track Lead event for footer WhatsApp button
-    const footerWhatsAppBtn = document.getElementById('whatsapp-footer');
-    if (footerWhatsAppBtn) {
-        footerWhatsAppBtn.addEventListener('click', function(e) {
-            // Check if fbq is available before firing event
-            if (typeof fbq === 'function') {
-                fbq('track', 'Lead');
-            }
-        });
+// ---------- LANGUAGE ----------
+function readStoredLang() {
+    try {
+        return localStorage.getItem(LANG_STORAGE_KEY);
+    } catch (e) {
+        return null;
     }
+}
 
-    // Track Lead event for fixed floating WhatsApp button
-    const fixedWhatsAppBtn = document.getElementById('whatsapp-fixed');
-    if (fixedWhatsAppBtn) {
-        fixedWhatsAppBtn.addEventListener('click', function(e) {
-            // Check if fbq is available before firing event
-            if (typeof fbq === 'function') {
-                fbq('track', 'Lead');
-            }
-        });
+function storeLang(language) {
+    try {
+        localStorage.setItem(LANG_STORAGE_KEY, language);
+    } catch (e) {
+        // Storage can be blocked (private mode); the language still applies for this visit.
     }
+}
 
-    // Track Lead event for confirm booking button (in modal)
-    const confirmBookingBtn = document.getElementById('confirmBooking');
-    if (confirmBookingBtn) {
-        confirmBookingBtn.addEventListener('click', function() {
+function setLanguage(language) {
+    if (!translations[language]) return;
+    currentLang = language;
 
-            let message = `Hola, quiero agendar una cita para ${selectedService}`;
-
-            if (selectedExtras.length > 0) {
-                message += ` y agregar los siguientes adicionales: ${selectedExtras.join(", ")}`;
-            }
-
-            const phone = "573173054836";
-            const whatsappURL = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-
-            // Track Lead event before redirect
-            if (typeof fbq === 'function') {
-                fbq('track', 'Lead');
-            }
-
-            window.open(whatsappURL, "_blank");
-        });
-    }
-
-    const modal = document.getElementById("serviceModal");
-    const modalTitle = document.getElementById("modalServiceTitle");
-    const confirmBtn = document.getElementById("confirmBooking");
-    const closeModal = document.querySelector(".close-modal");
-
-    let selectedService = "";
-    let selectedExtras = [];
-
-    function openModal() {
-        modal.classList.add("show");
-    }
-
-    function closeModalFunc() {
-        modal.classList.remove("show");
-    }
-
-    // Abrir modal al hacer click en servicio
-    document.querySelectorAll(".service-card").forEach(card => {
-        card.addEventListener("click", function () {
-            selectedService = this.querySelector("h3").innerText;
-            modalTitle.innerText = "Agendar: " + selectedService;
-            selectedExtras = [];
-
-            document.querySelectorAll(".extra-option").forEach(opt => {
-                opt.classList.remove("active");
-            });
-
-            // Mostrar/ocultar opción de barba
-            const barbaOption = document.getElementById('barba-option');
-            if (selectedService.includes('CORTE SENCILLO') || selectedService.includes('PREMIUM EXPERIENCE')) {
-                barbaOption.style.display = 'block';
-            } else {
-                barbaOption.style.display = 'none';
-            }
-
-            openModal();
-        });
-    });
-
-    // Selección múltiple
-    document.querySelectorAll(".extra-option").forEach(option => {
-        option.addEventListener("click", function () {
-            const name = this.dataset.name;
-
-            this.classList.toggle("active");
-
-            if (selectedExtras.includes(name)) {
-                selectedExtras = selectedExtras.filter(e => e !== name);
-            } else {
-                selectedExtras.push(name);
-            }
-        });
-    });
-
-    // Cerrar modal
-    closeModal.addEventListener("click", closeModalFunc);
-
-    window.addEventListener("click", function (e) {
-        if (e.target === modal) {
-            closeModalFunc();
+    document.querySelectorAll('[data-i18n]').forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        const value = translations[language][key];
+        if (!value) return;
+        if (key === 'hero_title') {
+            element.innerHTML = value;
+        } else {
+            element.innerText = value;
         }
     });
-});
 
-const slider = document.querySelector('.video-slider');
-const track = document.querySelector('.slider-track');
-const slides = document.querySelectorAll('.slide');
-const videos = document.querySelectorAll('video');
-const prevBtn = document.querySelector('.slider-btn.prev');
-const nextBtn = document.querySelector('.slider-btn.next');
-
-let currentIndex = 0;
-let startX = 0;
-let isDragging = false;
-let currentTranslate = 0;
-let prevTranslate = 0;
-
-// ---------- SLIDER BUTTON NAVIGATION ----------
-if (prevBtn && nextBtn) {
-    prevBtn.addEventListener('click', () => {
-        if (currentIndex > 0) {
-            currentIndex--;
-            updateSlider();
-        }
+    document.documentElement.lang = language;
+    document.querySelectorAll('.language-switcher button').forEach(btn => {
+        btn.classList.toggle('is-active', btn.id === `${language}-btn`);
     });
-    
-    nextBtn.addEventListener('click', () => {
-        if (currentIndex < slides.length - 1) {
-            currentIndex++;
-            updateSlider();
-        }
+    storeLang(language);
+}
+
+function initLanguage() {
+    document.getElementById('es-btn').addEventListener('click', () => setLanguage('es'));
+    document.getElementById('en-btn').addEventListener('click', () => setLanguage('en'));
+    setLanguage(readStoredLang() || DEFAULT_LANG);
+}
+
+// ---------- META PIXEL LEAD TRACKING ----------
+function initLeadTracking() {
+    ['whatsapp-hero', 'whatsapp-footer', 'whatsapp-fixed', 'whatsapp-cta'].forEach(id => {
+        const button = document.getElementById(id);
+        if (button) button.addEventListener('click', trackLead);
     });
 }
 
-// ---------- VIDEO LAZY LOADING WITH INTERSECTION OBSERVER ----------
-// Only load video sources when they come into view for better performance
-if ('IntersectionObserver' in window) {
-    const videoObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            const video = entry.target;
-            if (entry.isIntersecting) {
-                // Load video source when visible
-                if (video.poster && !video.loaded) {
-                    video.load();
-                    video.loaded = true;
-                }
-                // Auto-play when in view (only if user hasn't manually paused)
-                if ((video.parentElement.classList.contains('active') || 
-                    slides[currentIndex].contains(video)) && !video.userPaused) {
-                    video.play().catch(() => { });
-                }
+// ---------- BOOKING MODAL ----------
+function initBookingModal() {
+    const modal = document.getElementById('serviceModal');
+    const modalTitle = document.getElementById('modalServiceTitle');
+    const closeBtn = modal.querySelector('.close-modal');
+    const confirmBtn = document.getElementById('confirmBooking');
+    const barbaOption = document.getElementById('barba-option');
+    const extraOptions = modal.querySelectorAll('.extra-option');
+
+    let selectedService = '';
+    let selectedExtras = [];
+    let lastFocused = null;
+
+    const setExtraState = (option, active) => {
+        option.classList.toggle('active', active);
+        option.setAttribute('aria-checked', String(active));
+    };
+
+    const openModal = (card) => {
+        selectedService = card.querySelector('h3').innerText.trim();
+        selectedExtras = [];
+        modalTitle.innerText = `${t('modal_prefix')}${selectedService}`;
+        extraOptions.forEach(opt => setExtraState(opt, false));
+        barbaOption.hidden = card.dataset.barba !== 'true';
+
+        lastFocused = document.activeElement;
+        modal.classList.add('show');
+        document.body.classList.add('modal-open');
+        closeBtn.focus({ preventScroll: true });
+    };
+
+    const closeModal = () => {
+        modal.classList.remove('show');
+        document.body.classList.remove('modal-open');
+        if (lastFocused) lastFocused.focus({ preventScroll: true });
+    };
+
+    document.querySelectorAll('.service-card').forEach(card => {
+        card.addEventListener('click', () => openModal(card));
+        card.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                openModal(card);
+            }
+        });
+    });
+
+    const toggleExtra = (option) => {
+        const name = option.dataset.name;
+        const isActive = selectedExtras.includes(name);
+        selectedExtras = isActive
+            ? selectedExtras.filter(extra => extra !== name)
+            : [...selectedExtras, name];
+        setExtraState(option, !isActive);
+    };
+
+    extraOptions.forEach(option => {
+        option.addEventListener('click', () => toggleExtra(option));
+        option.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggleExtra(option);
+            }
+        });
+    });
+
+    confirmBtn.addEventListener('click', () => {
+        let message = `Hola, quiero agendar una cita para ${selectedService}`;
+        if (selectedExtras.length > 0) {
+            message += ` y agregar los siguientes adicionales: ${selectedExtras.join(', ')}`;
+        }
+        trackLead();
+        window.open(`https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(message)}`, '_blank', 'noopener');
+    });
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('show')) closeModal();
+    });
+}
+
+// ---------- VIDEO SLIDER ----------
+function initVideoSlider() {
+    const section = document.getElementById('videos');
+    const slider = section.querySelector('.video-slider');
+    const track = slider.querySelector('.slider-track');
+    const slides = [...slider.querySelectorAll('.slide')];
+    const videos = slides.map(slide => slide.querySelector('video'));
+    const prevBtn = slider.querySelector('.slider-btn.prev');
+    const nextBtn = slider.querySelector('.slider-btn.next');
+    const dotsContainer = section.querySelector('.slider-dots');
+    const soundBtn = section.querySelector('.sound-toggle');
+
+    const SWIPE_THRESHOLD = 60;
+    const TAP_TOLERANCE = 6;
+
+    let currentIndex = 0;
+    let sectionVisible = false;
+    let muted = true;
+    let drag = null;
+
+    const dots = slides.map((_, index) => {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.setAttribute('aria-label', `Video ${index + 1}`);
+        dot.addEventListener('click', () => goTo(index));
+        dotsContainer.appendChild(dot);
+        return dot;
+    });
+
+    const playCurrent = () => {
+        videos.forEach((video, index) => {
+            if (index === currentIndex && sectionVisible && !video.userPaused) {
+                video.play().catch(() => { });
             } else {
-                // Pause when not visible to save resources
                 video.pause();
             }
         });
-    }, { 
-        rootMargin: '100px',
-        threshold: 0.1 
-    });
+    };
+
+    function goTo(index) {
+        currentIndex = Math.max(0, Math.min(slides.length - 1, index));
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        dots.forEach((dot, i) => dot.classList.toggle('is-active', i === currentIndex));
+        prevBtn.disabled = currentIndex === 0;
+        nextBtn.disabled = currentIndex === slides.length - 1;
+        playCurrent();
+    }
+
+    const togglePlay = (video) => {
+        video.userPaused = !video.paused;
+        if (video.paused) {
+            video.play().catch(() => { });
+        } else {
+            video.pause();
+        }
+    };
+
+    prevBtn.addEventListener('click', () => goTo(currentIndex - 1));
+    nextBtn.addEventListener('click', () => goTo(currentIndex + 1));
 
     videos.forEach(video => {
-        video.loaded = false;
-        const playOverlay = video.nextElementSibling;
-        const swipeIndicator = playOverlay ? playOverlay.nextElementSibling : null;
-        
-        // Add click event to toggle play/pause via overlay
-        if (playOverlay && playOverlay.classList.contains('play-overlay')) {
-            playOverlay.addEventListener('click', (e) => {
+        video.muted = muted;
+        video.userPaused = false;
+        video.addEventListener('play', () => video.classList.add('playing'));
+        video.addEventListener('pause', () => video.classList.remove('playing'));
+
+        const overlay = video.nextElementSibling;
+        if (overlay && overlay.classList.contains('play-overlay')) {
+            overlay.addEventListener('click', (e) => {
                 e.stopPropagation();
-                playOverlay.classList.toggle('playing');
-                if (video.userPaused) {
-                    video.userPaused = false;
-                    video.play();
-                } else {
-                    video.userPaused = true;
-                    video.pause();
-                }
+                togglePlay(video);
             });
         }
-        
-        if (swipeIndicator && swipeIndicator.classList.contains('swipe-indicator')) {
-            swipeIndicator.addEventListener('click', (e) => {
-                e.stopPropagation();
-                if (currentIndex < slides.length - 1) {
-                    currentIndex++;
-                    updateSlider();
-                }
-            });
-        }
-        
-        video.addEventListener('play', () => {
-            video.classList.add('playing');
-        });
-        
-        video.addEventListener('pause', () => {
-            video.classList.remove('playing');
-        });
-        
-        videoObserver.observe(video);
     });
-}
 
-// ---------- UPDATE SLIDER ----------
-function updateSlider() {
-    track.style.transform = `translateX(-${currentIndex * 100}%)`;
-
-    videos.forEach((video, index) => {
-        video.pause();
-        if (index === currentIndex) {
-            video.play().catch(() => { });
-        }
+    soundBtn.addEventListener('click', () => {
+        muted = !muted;
+        videos.forEach(video => { video.muted = muted; });
+        soundBtn.setAttribute('aria-pressed', String(!muted));
+        soundBtn.setAttribute('aria-label', muted ? 'Activar sonido' : 'Silenciar');
+        soundBtn.querySelector('i').className = muted ? 'fa-solid fa-volume-xmark' : 'fa-solid fa-volume-high';
     });
-}
 
-// ---------- DRAG FUNCTION ----------
-slider.addEventListener('mousedown', startDrag);
-slider.addEventListener('touchstart', startDrag);
+    // Pointer drag / swipe (works for mouse, touch and pen)
+    slider.addEventListener('pointerdown', (e) => {
+        if (e.target.closest('button, .play-overlay')) return;
+        drag = { startX: e.clientX, delta: 0, pointerId: e.pointerId };
+        slider.setPointerCapture(e.pointerId);
+        track.style.transition = 'none';
+        slider.style.cursor = 'grabbing';
+    });
 
-slider.addEventListener('mousemove', drag);
-slider.addEventListener('touchmove', drag);
+    slider.addEventListener('pointermove', (e) => {
+        if (!drag || e.pointerId !== drag.pointerId) return;
+        drag = { ...drag, delta: e.clientX - drag.startX };
+        track.style.transform = `translateX(calc(-${currentIndex * 100}% + ${drag.delta}px))`;
+    });
 
-slider.addEventListener('mouseup', endDrag);
-slider.addEventListener('mouseleave', endDrag);
-slider.addEventListener('touchend', endDrag);
+    const endDrag = (e) => {
+        if (!drag || e.pointerId !== drag.pointerId) return;
+        const { delta } = drag;
+        drag = null;
+        track.style.transition = '';
+        slider.style.cursor = '';
 
-function startDrag(e) {
-    isDragging = true;
-    startX = getPositionX(e);
-    slider.style.cursor = "grabbing";
-}
-
-function drag(e) {
-    if (!isDragging) return;
-    const currentPosition = getPositionX(e);
-    const diff = currentPosition - startX;
-
-    currentTranslate = prevTranslate + diff;
-    track.style.transform = `translateX(${currentTranslate}px)`;
-}
-
-function endDrag(e) {
-    if (!isDragging) return;
-    isDragging = false;
-    slider.style.cursor = "grab";
-
-    const movedBy = currentTranslate - prevTranslate;
-
-    if (movedBy < -100 && currentIndex < slides.length - 1) {
-        currentIndex++;
-    }
-
-    if (movedBy > 100 && currentIndex > 0) {
-        currentIndex--;
-    }
-
-    prevTranslate = -currentIndex * slider.offsetWidth;
-    currentTranslate = prevTranslate;
-    updateSlider();
-}
-
-function getPositionX(e) {
-    return e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
-}
-
-// ---------- AUTO PLAY WHEN SECTION VISIBLE ----------
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            updateSlider();
+        if (Math.abs(delta) < TAP_TOLERANCE) {
+            goTo(currentIndex);
+            togglePlay(videos[currentIndex]);
+        } else if (delta < -SWIPE_THRESHOLD) {
+            goTo(currentIndex + 1);
+        } else if (delta > SWIPE_THRESHOLD) {
+            goTo(currentIndex - 1);
         } else {
-            videos.forEach(video => video.pause());
+            goTo(currentIndex);
         }
-    });
-}, { threshold: 0.6 });
+    };
 
-observer.observe(document.querySelector('#videos'));
+    slider.addEventListener('pointerup', endDrag);
+    slider.addEventListener('pointercancel', endDrag);
 
-function openModal() {
-    modal.classList.add("show");
+    // Auto play only while the section is on screen
+    if ('IntersectionObserver' in window) {
+        new IntersectionObserver((entries) => {
+            sectionVisible = entries[0].isIntersecting;
+            playCurrent();
+        }, { threshold: 0.5 }).observe(slider);
+    }
+
+    goTo(0);
 }
 
-function closeModalFunc() {
-    modal.classList.remove("show");
+// ---------- IMAGE LIGHTBOX ----------
+function initImageModal() {
+    const imageModal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+    const closeBtn = imageModal.querySelector('.close-image-modal');
+
+    const close = () => { imageModal.style.display = 'none'; };
+
+    document.querySelectorAll('.gallery-image').forEach(image => {
+        image.addEventListener('click', () => {
+            modalImage.src = image.src;
+            modalImage.alt = image.alt;
+            imageModal.style.display = 'block';
+        });
+    });
+
+    closeBtn.addEventListener('click', close);
+    imageModal.addEventListener('click', (e) => {
+        if (e.target === imageModal) close();
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') close();
+    });
 }
 
-// Image Modal
-const imageModal = document.getElementById("imageModal");
-const modalImage = document.getElementById("modalImage");
-const galleryImages = document.querySelectorAll(".gallery-image");
-const closeImageModal = document.querySelector(".close-image-modal");
-
-galleryImages.forEach(image => {
-    image.addEventListener("click", () => {
-        imageModal.style.display = "block";
-        modalImage.src = image.src;
-    });
+document.addEventListener('DOMContentLoaded', () => {
+    initLanguage();
+    initLeadTracking();
+    initBookingModal();
+    initVideoSlider();
+    initImageModal();
 });
-
-closeImageModal.addEventListener("click", () => {
-    imageModal.style.display = "none";
-});
-
-imageModal.addEventListener("click", (e) => {
-    if (e.target === imageModal) {
-        imageModal.style.display = "none";
-    }
-});
-
-// ---------- SCROLL TO TOP BUTTON ----------
-const scrollTopBtn = document.getElementById('scrollTopBtn');
-
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) {
-        scrollTopBtn.classList.add('visible');
-    } else {
-        scrollTopBtn.classList.remove('visible');
-    }
-});
-
-scrollTopBtn.addEventListener('click', () => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-});
-

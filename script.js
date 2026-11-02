@@ -4,6 +4,9 @@
 const WHATSAPP_PHONE = '573173054836';
 const LANG_STORAGE_KEY = 'samc-lang';
 const DEFAULT_LANG = 'es';
+const SHEET_DISMISS_PX = 110; // drag distance that closes the bottom sheet
+const SHEET_DISMISS_VELOCITY = 0.6; // px/ms, a quick flick closes it too
+const SHEET_RUBBER_BAND = 0.2; // resistance when pulling the sheet upwards
 
 let currentLang = DEFAULT_LANG;
 
@@ -147,9 +150,85 @@ function initBookingModal() {
     modal.addEventListener('click', (e) => {
         if (e.target === modal) closeModal();
     });
+    initSheetDrag(modal.querySelector('.modal-content'), modal.querySelector('.modal-grabber'), closeModal);
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && modal.classList.contains('show')) closeModal();
     });
+}
+
+// ---------- BOTTOM SHEET DRAG (mobile) ----------
+// Pull the grabber down to dismiss, like an iOS sheet. While dragging the sheet
+// follows the finger 1:1; on release it either closes or springs back (CSS).
+function initSheetDrag(sheet, grabber, onDismiss) {
+    const isSheetLayout = window.matchMedia('(max-width: 640px)');
+    let drag = null;
+
+    grabber.addEventListener('pointerdown', (e) => {
+        if (!isSheetLayout.matches) return;
+        drag = { startY: e.clientY, startAt: performance.now(), dy: 0 };
+        grabber.setPointerCapture(e.pointerId);
+        sheet.style.transition = 'none';
+    });
+
+    grabber.addEventListener('pointermove', (e) => {
+        if (!drag) return;
+        const raw = e.clientY - drag.startY;
+        drag.dy = raw < 0 ? raw * SHEET_RUBBER_BAND : raw;
+        sheet.style.transform = `translateY(${drag.dy}px)`;
+    });
+
+    const release = () => {
+        if (!drag) return;
+        const velocity = drag.dy / Math.max(1, performance.now() - drag.startAt);
+        const dismiss = drag.dy > SHEET_DISMISS_PX || (drag.dy > 30 && velocity > SHEET_DISMISS_VELOCITY);
+        drag = null;
+        // Hand control back to the stylesheet: it animates from the dragged
+        // position to either the closed or the open state.
+        sheet.style.transition = '';
+        sheet.style.transform = '';
+        if (dismiss) onDismiss();
+    };
+
+    grabber.addEventListener('pointerup', release);
+    grabber.addEventListener('pointercancel', release);
+}
+
+// ---------- SERVICE TABS (segmented control) ----------
+function initServiceTabs() {
+    const control = document.querySelector('.segmented');
+    if (!control) return;
+    const tabs = [...control.querySelectorAll('[role="tab"]')];
+
+    const select = (index, { focus = false } = {}) => {
+        tabs.forEach((tab, i) => {
+            const active = i === index;
+            tab.setAttribute('aria-selected', String(active));
+            tab.tabIndex = active ? 0 : -1;
+            document.getElementById(tab.getAttribute('aria-controls')).hidden = !active;
+        });
+        control.dataset.active = String(index);
+        if (focus) tabs[index].focus();
+    };
+
+    tabs.forEach((tab, i) => {
+        tab.addEventListener('click', () => select(i));
+        tab.addEventListener('keydown', (e) => {
+            if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+            e.preventDefault();
+            const step = e.key === 'ArrowRight' ? 1 : -1;
+            select((i + step + tabs.length) % tabs.length, { focus: true });
+        });
+    });
+
+    // Deep links (e.g. sitemap's #beard-services) open the matching tab
+    const openFromHash = () => {
+        const index = tabs.findIndex(tab => `#${tab.getAttribute('aria-controls')}` === location.hash);
+        if (index < 0) return;
+        select(index);
+        document.getElementById('services').scrollIntoView();
+    };
+    window.addEventListener('hashchange', openFromHash);
+    openFromHash();
 }
 
 // ---------- VIDEO SLIDER ----------
@@ -312,6 +391,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initLanguage();
     initLeadTracking();
     initBookingModal();
+    initServiceTabs();
     initVideoSlider();
     initImageModal();
 });

@@ -228,6 +228,30 @@ a, button, summary, [role="button"], [tabindex="0"] { -webkit-tap-highlight-colo
 @keyframes subIn { to { opacity: 1; } }
 
 /* =========================================================
+   SCROLL-DRIVEN HERO — like apple.com product pages: the photo
+   drifts and dims while the headline lifts away. Native scroll
+   timelines run on the compositor; unsupported browsers skip it.
+   ========================================================= */
+@supports (animation-timeline: scroll()) {
+    @media (prefers-reduced-motion: no-preference) {
+        .hero__bg {
+            animation: heroBgScroll linear both;
+            animation-timeline: scroll(root);
+            animation-range: 0 100vh;
+        }
+
+        .hero__content {
+            animation: heroContentScroll linear both;
+            animation-timeline: scroll(root);
+            animation-range: 0 75vh;
+        }
+    }
+}
+
+@keyframes heroBgScroll { to { translate: 0 22%; opacity: 0.35; } }
+@keyframes heroContentScroll { to { translate: 0 -70px; scale: 0.96; opacity: 0; } }
+
+/* =========================================================
    REDUCED MOTION
    ========================================================= */
 @media (prefers-reduced-motion: reduce) {

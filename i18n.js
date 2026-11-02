@@ -68,8 +68,6 @@ const translations = {
     "videos_title": "Videos de nuestros trabajos",
     "footer_author": "Santi Muñoz",
     "footer_quote": "\"La imagen correcta abre puertas que otros ni siquiera ven.\"",
-    "beard_services_tagline": "Servicios de barba",
-    "beard_services_title": "Diseño y cuidado de barba",
     "beard_services_subtitle": "Define tu estilo con un servicio exclusivo para tu barba.",
     "premium_beard_design_title": "Diseño de barba premium",
     "premium_beard_design_price_cop": "$50.000 COP",
@@ -123,7 +121,9 @@ const translations = {
     "modal_question": "¿Deseas agregar detalles adicionales?",
     "modal_confirm": "Agendar por WhatsApp",
     "extra_barba_name": "Barba",
-    "extra_barba_price": "$50k / $18 USD"
+    "extra_barba_price": "$50k / $18 USD",
+    "tab_cuts": "Cortes",
+    "tab_beard": "Barba"
   },
   "en": {
     "nav_services": "Services",
@@ -194,8 +194,6 @@ const translations = {
     "videos_title": "Videos of our work",
     "footer_author": "Santi Muñoz",
     "footer_quote": "\"The right image opens doors that others don't even see.\"",
-    "beard_services_tagline": "Beard services",
-    "beard_services_title": "Beard design & care",
     "beard_services_subtitle": "Define your style with an exclusive service for your beard.",
     "premium_beard_design_title": "Premium Beard Design",
     "premium_beard_design_price_cop": "$50,000 COP",
@@ -249,6 +247,8 @@ const translations = {
     "modal_question": "Would you like to add extras?",
     "modal_confirm": "Book via WhatsApp",
     "extra_barba_name": "Beard",
-    "extra_barba_price": "$50k / $18 USD"
+    "extra_barba_price": "$50k / $18 USD",
+    "tab_cuts": "Cuts",
+    "tab_beard": "Beard"
   }
 };

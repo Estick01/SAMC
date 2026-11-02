@@ -1,16 +1,10 @@
 /* =========================================================
-   SAMC BARBERS — Effects: intro, cursor, reveals, ambience
+   SAMC BARBERS — Effects: intro, reveals, press feedback, ambience
    Everything that hides content is gated behind html.js so the
    page stays fully usable if JavaScript fails to load.
    ========================================================= */
 
 /* ---------- Keyframes ---------- */
-@keyframes sheen { 0%, 60% { transform: translateX(-120%); } 100% { transform: translateX(120%); } }
-@keyframes pulseDot { 0% { transform: scale(1); opacity: 0.7; } 70%, 100% { transform: scale(3.4); opacity: 0; } }
-@keyframes scrollWheel { 0% { transform: translateY(0); opacity: 1; } 80%, 100% { transform: translateY(12px); opacity: 0; } }
-@keyframes marquee { to { transform: translateX(-50%); } }
-@keyframes floatY { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
-@keyframes ring { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(1.6); opacity: 0; } }
 @keyframes faqOpen { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
 @keyframes zoomIn { from { opacity: 0; transform: scale(0.92); } to { opacity: 1; transform: none; } }
 /* ---------- Ambient background ----------
@@ -32,13 +26,13 @@
 .orb--1 {
     width: 70vw; height: 70vw;
     top: 20vh; left: -30vw;
-    background: radial-gradient(circle, rgba(var(--gold-rgb), 0.11), transparent 65%);
+    background: radial-gradient(circle, rgba(var(--gold-rgb), 0.06), transparent 65%);
 }
 
 .orb--2 {
     width: 60vw; height: 60vw;
     top: 45vh; right: -28vw;
-    background: radial-gradient(circle, rgba(var(--gold-rgb), 0.08), transparent 65%);
+    background: radial-gradient(circle, rgba(var(--gold-rgb), 0.045), transparent 65%);
 }
 
 .orb--3 {
@@ -61,32 +55,62 @@
     display: block;
     height: 100%;
     background: linear-gradient(90deg, var(--gold-dark), var(--gold-light));
-    box-shadow: 0 0 12px rgba(var(--gold-rgb), 0.8);
     transform-origin: left;
     transform: scaleX(var(--progress, 0));
     transition: transform 0.25s linear;
 }
 
 /* ---------- Scroll reveal ---------- */
-/* Infinite loops stop while their element is off screen (class set by effects.js) */
-.is-offscreen,
-.is-offscreen *,
-.is-offscreen::before,
-.is-offscreen::after { animation-play-state: paused !important; }
-
-/* Only opacity + translate are animated: both run on the compositor. */
+/* Only compositor properties are animated. Items rise into place on a spring,
+   growing slightly like an iOS card. This selector outranks each component's own
+   transition, so it also carries their hover (transform), press (scale) and
+   border/shadow transitions; the stagger delay applies to the entrance only. */
 .js [data-reveal] {
+    --reveal-delay: calc(var(--d, 0) * 0.08s);
     opacity: 0;
-    translate: 0 40px;
+    translate: 0 36px;
+    scale: 0.96;
     transition:
-        opacity 0.9s var(--ease-out),
-        translate 1s var(--ease-out);
-    transition-delay: calc(var(--d, 0) * 0.1s);
+        opacity 0.8s var(--ease-out),
+        translate 1s var(--spring),
+        scale 1s var(--spring),
+        transform 0.6s var(--spring),
+        border-color 0.4s,
+        box-shadow 0.5s var(--ease-out);
+    transition-delay: var(--reveal-delay), var(--reveal-delay), var(--reveal-delay), 0s, 0s, 0s;
 }
 
-.js [data-reveal="left"] { translate: -50px 0; }
+.js [data-reveal="left"] { translate: -44px 0; }
 
-.js [data-reveal].is-visible { opacity: 1; translate: 0 0; }
+.js [data-reveal].is-visible { opacity: 1; translate: 0 0; scale: 1; }
+
+/* Once the entrance has played, press feedback must react instantly */
+.js [data-reveal].is-revealed {
+    transition:
+        opacity 0.8s var(--ease-out),
+        translate 1s var(--spring),
+        scale 0.45s var(--spring-bouncy),
+        transform 0.6s var(--spring),
+        border-color 0.4s,
+        box-shadow 0.5s var(--ease-out);
+}
+
+/* =========================================================
+   iOS PRESS FEEDBACK — everything tappable sinks a little and
+   springs back on release. Uses the standalone `scale` property
+   so it composes with the inline transforms set by tilt/magnetic.
+   ========================================================= */
+a, button, summary, [role="button"], [tabindex="0"] { -webkit-tap-highlight-color: transparent; }
+
+:is(.btn, .socials a, .whatsapp-fixed, .scroll-top-btn, .close-modal, .slider-btn,
+    .sound-toggle, .language-switcher button, .main-nav a, .extra-option):active { scale: 0.95; }
+
+.play-overlay:active { scale: 0.9; }
+
+:is(.service-card, .perk, .testimonial-card):active { scale: 0.98; }
+
+.faq-item summary { transition: scale 0.45s var(--spring-bouncy); }
+.faq-item summary:active { scale: 0.985; }
 
 /* ---------- Hero entrance (after intro) ---------- */
 .js [data-hero] {
@@ -99,7 +123,7 @@
     translate: 0 0;
     transition:
         opacity 1.1s var(--ease-out),
-        translate 1.2s var(--ease-out);
+        translate 1.2s var(--spring);
     transition-delay: calc(0.15s + var(--d, 0) * 0.12s);
 }
 
@@ -114,59 +138,38 @@
 }
 
 /* =========================================================
-   INTRO — crown, wordmark and a scissor cutting the screen
+   INTRO — a brief launch moment (~1s), like an iOS app opening:
+   the crown draws, the wordmark rises, then everything fades away.
    ========================================================= */
 .intro { display: none; }
 
 .js .intro {
-    display: block;
+    display: grid;
+    place-items: center;
     position: fixed;
     inset: 0;
     z-index: 20000;
-    pointer-events: auto;
-    animation: introHide 0s 3.4s forwards;
+    background: var(--dark);
+    animation: introOut 0.45s var(--ease-out) 0.85s forwards;
 }
 
 .js body.is-loading { overflow: hidden; }
 
-@keyframes introHide { to { visibility: hidden; pointer-events: none; } }
-
-.intro__half {
-    position: absolute;
-    left: 0;
-    right: 0;
-    height: 50.5%;
-    background: radial-gradient(ellipse at 50% 100%, #17140e 0%, var(--dark) 60%);
-    animation: 0.95s var(--ease-ios) 2.35s forwards;
-}
-
-.intro__half--top { top: 0; animation-name: splitUp; }
-.intro__half--bottom {
-    bottom: 0;
-    background: radial-gradient(ellipse at 50% 0%, #17140e 0%, var(--dark) 60%);
-    animation-name: splitDown;
-}
-
-@keyframes splitUp { to { transform: translateY(-101%); } }
-@keyframes splitDown { to { transform: translateY(101%); } }
+@keyframes introOut { to { opacity: 0; visibility: hidden; } }
 
 .intro__content {
-    position: absolute;
-    inset: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     gap: 6px;
-    padding-bottom: 70px;
-    animation: introContentOut 0.6s var(--ease-ios) 2.15s forwards;
+    animation: introZoom 0.45s var(--ease-out) 0.85s forwards;
 }
 
-@keyframes introContentOut { to { opacity: 0; transform: scale(1.06); filter: blur(8px); } }
+@keyframes introZoom { to { transform: scale(1.06); } }
 
 .intro__crown {
-    width: 74px;
-    margin-bottom: 14px;
+    width: 64px;
+    margin-bottom: 12px;
     overflow: visible;
 }
 
@@ -178,194 +181,51 @@
     stroke-linecap: round;
     stroke-dasharray: 400;
     stroke-dashoffset: 400;
-    animation: drawStroke 1.1s var(--ease-out) 0.1s forwards;
+    animation: drawStroke 0.6s var(--ease-out) forwards;
 }
 
-.intro__crown circle { fill: var(--gold); fill-opacity: 0; animation: drawStroke 1.1s var(--ease-out) 0.1s forwards, fillIn 0.4s 0.9s forwards; }
+.intro__crown circle { fill: var(--gold); fill-opacity: 0; animation: drawStroke 0.6s var(--ease-out) forwards, fillIn 0.3s 0.4s forwards; }
 
 @keyframes drawStroke { to { stroke-dashoffset: 0; } }
 @keyframes fillIn { to { fill-opacity: 1; } }
 
 .intro__word {
     display: flex;
-    gap: 0.06em;
+    gap: 0.04em;
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: clamp(3.4rem, 14vw, 7rem);
+    font-size: clamp(3rem, 12vw, 5.5rem);
     line-height: 1;
-    letter-spacing: 0.08em;
+    letter-spacing: -0.02em;
     overflow: hidden;
     padding: 0 0.1em;
+    color: var(--white);
 }
 
 .intro__word span {
     display: inline-block;
-    background: linear-gradient(180deg, #fff 30%, var(--gold) 130%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
     transform: translateY(110%);
-    animation: letterUp 0.9s var(--ease-ios) forwards;
+    animation: letterUp 0.6s var(--spring) forwards;
 }
 
-.intro__word span:nth-child(1) { animation-delay: 0.45s; }
-.intro__word span:nth-child(2) { animation-delay: 0.53s; }
-.intro__word span:nth-child(3) { animation-delay: 0.61s; }
-.intro__word span:nth-child(4) { animation-delay: 0.69s; }
+.intro__word span:nth-child(1) { animation-delay: 0.1s; }
+.intro__word span:nth-child(2) { animation-delay: 0.14s; }
+.intro__word span:nth-child(3) { animation-delay: 0.18s; }
+.intro__word span:nth-child(4) { animation-delay: 0.22s; }
 
 @keyframes letterUp { to { transform: translateY(0); } }
 
 .intro__sub {
     font-family: var(--font-body);
-    font-size: clamp(0.62rem, 2vw, 0.78rem);
+    font-size: clamp(0.62rem, 2vw, 0.74rem);
     font-weight: 500;
-    color: var(--gold);
-    letter-spacing: 0.2em;
-    opacity: 0;
-    animation: subIn 1.2s var(--ease-out) 0.95s forwards;
-}
-
-@keyframes subIn { to { opacity: 1; letter-spacing: 0.7em; } }
-
-/* The cut line */
-.intro__line {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    height: 0;
-    animation: lineOut 0.4s 2.4s forwards;
-}
-
-@keyframes lineOut { to { opacity: 0; } }
-
-.intro__line-fill {
-    position: absolute;
-    left: 0;
-    top: -0.5px;
-    height: 1px;
-    width: 100%;
-    background: linear-gradient(90deg, transparent, var(--gold-light) 20%, var(--gold) 80%, transparent);
-    box-shadow: 0 0 14px rgba(var(--gold-rgb), 0.9);
-    transform: scaleX(0);
-    transform-origin: left;
-    animation: lineDraw 1s var(--ease-in-out, cubic-bezier(0.65, 0, 0.35, 1)) 1.3s forwards;
-}
-
-@keyframes lineDraw { to { transform: scaleX(1); } }
-
-.intro__scissors {
-    position: absolute;
-    top: -24px;
-    left: 0;
-    width: 48px;
-    height: 48px;
-    overflow: visible;
-    translate: -60px 0;
-    animation: scissorsTravel 1s cubic-bezier(0.65, 0, 0.35, 1) 1.3s forwards;
-    filter: drop-shadow(0 0 10px rgba(var(--gold-rgb), 0.6));
-}
-
-@keyframes scissorsTravel { to { translate: calc(100vw + 20px) 0; } }
-
-.intro__scissors .blade--a { animation: snipA 0.2s ease-in-out 1.3s 5 alternate; }
-.intro__scissors .blade--b { animation: snipB 0.2s ease-in-out 1.3s 5 alternate; }
-
-.intro__skip {
-    position: absolute;
-    right: 24px;
-    bottom: 24px;
-    padding: 8px 16px;
-    border-radius: 999px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    background: rgba(255, 255, 255, 0.05);
     color: var(--gray-text);
-    font-size: 0.6rem;
-    letter-spacing: 3px;
-    cursor: pointer;
+    letter-spacing: 0.4em;
     opacity: 0;
-    animation: subIn 0.6s 0.8s forwards, lineOut 0.3s 2.2s forwards;
+    animation: subIn 0.4s var(--ease-out) 0.35s forwards;
 }
 
-/* Skip: collapse the whole timeline */
-.intro.is-skipped,
-.intro.is-skipped * {
-    animation-delay: 0s !important;
-    animation-duration: 0.01s !important;
-}
-
-.intro.is-skipped { transition: opacity 0.35s; opacity: 0; }
-
-/* =========================================================
-   SCISSORS (shared by cursor and intro)
-   ========================================================= */
-.blade {
-    transform-box: view-box;
-    transform-origin: 22px 24px;
-    transition: transform 0.18s var(--ease-out);
-}
-
-.blade circle {
-    fill: none;
-    stroke: var(--gold);
-    stroke-width: 2.4;
-}
-
-.blade path {
-    fill: var(--gold-light);
-    stroke: var(--gold-dark);
-    stroke-width: 0.6;
-    stroke-linejoin: round;
-}
-
-.pivot { fill: #111; stroke: var(--gold-light); stroke-width: 0.8; }
-
-.blade--a { transform: rotate(18deg); }
-.blade--b { transform: rotate(-18deg); }
-
-@keyframes snipA { from { transform: rotate(20deg); } to { transform: rotate(2deg); } }
-@keyframes snipB { from { transform: rotate(-20deg); } to { transform: rotate(-2deg); } }
-
-/* ---------- Custom cursor ---------- */
-.cursor {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 30000;
-    width: 40px;
-    height: 40px;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.3s;
-    will-change: transform;
-}
-
-.cursor svg {
-    width: 100%;
-    height: 100%;
-    overflow: visible;
-    filter: drop-shadow(0 0 1.5px rgba(0, 0, 0, 0.95)) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
-}
-
-/* Point the tips to the top-left, like a regular arrow */
-.cursor__rotor {
-    transform-box: view-box;
-    transform-origin: 24px 24px;
-    transform: rotate(-135deg);
-    transition: transform 0.35s var(--ease-out);
-}
-
-.has-cursor .cursor.is-visible { opacity: 1; }
-
-.has-cursor,
-.has-cursor * { cursor: none !important; }
-
-.cursor.is-hover .cursor__rotor { transform: rotate(-135deg) scale(1.18); }
-.cursor.is-hover .blade--a { animation: snipA 0.32s ease-in-out infinite alternate; }
-.cursor.is-hover .blade--b { animation: snipB 0.32s ease-in-out infinite alternate; }
-
-.cursor.is-down .blade--a { animation: none; transform: rotate(1deg); }
-.cursor.is-down .blade--b { animation: none; transform: rotate(-1deg); }
+@keyframes subIn { to { opacity: 1; } }
 
 /* =========================================================
    REDUCED MOTION
@@ -379,5 +239,5 @@
     }
 
     .js .intro { display: none; }
-    .js [data-reveal], .js [data-hero] { opacity: 1; translate: none; clip-path: none; }
+    .js [data-reveal], .js [data-hero] { opacity: 1; translate: none; scale: none; clip-path: none; }
 }

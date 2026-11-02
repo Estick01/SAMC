@@ -42,13 +42,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Oswald:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@1,500;1,700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,500;1,700&display=swap"
         rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
     <link rel="preload" href="img/SAMC1.png" as="image">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="components.css">
-    <link rel="stylesheet" href="effects.css">
+    <link rel="stylesheet" href="style.css?v=20261101e">
+    <link rel="stylesheet" href="components.css?v=20261101e">
+    <link rel="stylesheet" href="effects.css?v=20261101e">
 
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
@@ -185,8 +185,6 @@
 <body class="is-loading">
     <!-- ========== INTRO ========== -->
     <div class="intro" id="intro" aria-hidden="true">
-        <div class="intro__half intro__half--top"></div>
-        <div class="intro__half intro__half--bottom"></div>
         <div class="intro__content">
             <svg class="intro__crown" viewBox="0 0 120 70" fill="none">
                 <path d="M10 60 L4 18 L32 40 L60 6 L88 40 L116 18 L110 60 Z" />
@@ -200,21 +198,6 @@
             </div>
             <div class="intro__sub">BARBERS EXCLUSIVE</div>
         </div>
-        <div class="intro__line">
-            <span class="intro__line-fill"></span>
-            <svg class="intro__scissors" viewBox="0 0 48 48">
-                <g class="blade blade--a">
-                    <circle cx="8" cy="24" r="5" />
-                    <path d="M13 23 L22 23.2 L46 24 L22 25.8 L13 25 Z" />
-                </g>
-                <g class="blade blade--b">
-                    <circle cx="8" cy="24" r="5" />
-                    <path d="M13 23 L22 23.2 L46 24 L22 25.8 L13 25 Z" />
-                </g>
-                <circle class="pivot" cx="22" cy="24" r="1.6" />
-            </svg>
-        </div>
-        <button class="intro__skip" type="button">SKIP</button>
     </div>
 
     <!-- Ambient background (gives the glass something to blur) -->
@@ -224,23 +207,6 @@
         <span class="orb orb--3"></span>
     </div>
     <div class="scroll-progress" aria-hidden="true"><span></span></div>
-
-    <!-- Custom scissors cursor -->
-    <div class="cursor" aria-hidden="true">
-        <svg viewBox="0 0 48 48">
-            <g class="cursor__rotor">
-                <g class="blade blade--a">
-                    <circle cx="8" cy="24" r="5" />
-                    <path d="M13 23 L22 23.2 L46 24 L22 25.8 L13 25 Z" />
-                </g>
-                <g class="blade blade--b">
-                    <circle cx="8" cy="24" r="5" />
-                    <path d="M13 23 L22 23.2 L46 24 L22 25.8 L13 25 Z" />
-                </g>
-                <circle class="pivot" cx="22" cy="24" r="1.6" />
-            </g>
-        </svg>
-    </div>
 
     <!-- ========== HEADER ========== -->
     <header class="main-header">
@@ -315,31 +281,7 @@
                     </div>
                 </div>
             </div>
-            <a href="#experience" class="scroll-hint" aria-label="Bajar">
-                <span class="scroll-hint__mouse"><span></span></span>
-                <span data-i18n="scroll_hint">DESLIZA</span>
-            </a>
         </section>
-
-        <!-- ========== MARQUEE ========== -->
-        <div class="marquee" aria-hidden="true">
-            <div class="marquee__track">
-                <div class="marquee__group">
-                    <span data-i18n="marquee_1">CORTES DE PRECISIÓN</span><i class="fa-solid fa-scissors"></i>
-                    <span data-i18n="marquee_2">DISEÑO DE BARBA</span><i class="fa-solid fa-crown"></i>
-                    <span data-i18n="marquee_3">CUIDADO FACIAL</span><i class="fa-solid fa-scissors"></i>
-                    <span data-i18n="marquee_4">SERVICIO A DOMICILIO</span><i class="fa-solid fa-crown"></i>
-                    <span>MEDELLÍN</span><i class="fa-solid fa-scissors"></i>
-                </div>
-                <div class="marquee__group">
-                    <span data-i18n="marquee_1">CORTES DE PRECISIÓN</span><i class="fa-solid fa-scissors"></i>
-                    <span data-i18n="marquee_2">DISEÑO DE BARBA</span><i class="fa-solid fa-crown"></i>
-                    <span data-i18n="marquee_3">CUIDADO FACIAL</span><i class="fa-solid fa-scissors"></i>
-                    <span data-i18n="marquee_4">SERVICIO A DOMICILIO</span><i class="fa-solid fa-crown"></i>
-                    <span>MEDELLÍN</span><i class="fa-solid fa-scissors"></i>
-                </div>
-            </div>
-        </div>
 
         <!-- ========== EXPERIENCE ========== -->
         <section id="experience" class="section experience">
@@ -867,9 +809,9 @@
         <img class="image-modal-content" id="modalImage" alt="">
     </div>
 
-    <script src="i18n.js" defer></script>
-    <script src="script.js" defer></script>
-    <script src="effects.js" defer></script>
+    <script src="i18n.js?v=20261101e" defer></script>
+    <script src="script.js?v=20261101e" defer></script>
+    <script src="effects.js?v=20261101e" defer></script>
 </body>
 
 </html>

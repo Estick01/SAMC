@@ -1,17 +1,15 @@
-// SAMC Barbers — visual effects: intro, scissors cursor, reveals, header, micro-interactions.
+// SAMC Barbers — visual effects: intro, reveals, header, micro-interactions.
 
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const hasFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-const INTRO_FALLBACK_MS = 3600;
-const SKIP_FADE_MS = 350;
+const INTRO_FALLBACK_MS = 1600;
 const HEADER_SCROLLED_AT = 40;
 const HEADER_HIDE_AFTER = 500; // header hides on scroll down only past this point
 const SCROLL_DIRECTION_TOLERANCE = 6; // px, ignores tiny jitters
 const PROGRESS_STEPS = 100; // scroll progress resolution (1% steps)
 const TILT_MAX_DEG = 6;
 const MAGNET_STRENGTH = 0.25;
-const CURSOR_HOTSPOT = 8; // px from the cursor box corner to the scissor tips
 const SCROLL_IDLE_MS = 150; // pointer effects pause while the page is scrolling
 
 // Updated by the scroll listener; hover effects skip work while scrolling so the
@@ -38,56 +36,13 @@ function initIntro() {
         return;
     }
 
-    const bottomHalf = intro.querySelector('.intro__half--bottom');
-    bottomHalf.addEventListener('animationend', (e) => {
-        if (e.animationName === 'splitDown') finish();
+    intro.addEventListener('animationend', (e) => {
+        if (e.target === intro && e.animationName === 'introOut') finish();
     });
 
-    const skip = () => {
-        intro.classList.add('is-skipped');
-        setTimeout(finish, SKIP_FADE_MS);
-    };
-
-    intro.addEventListener('click', skip);
-    document.addEventListener('keydown', skip, { once: true });
+    intro.addEventListener('click', finish);
+    document.addEventListener('keydown', finish, { once: true });
     setTimeout(finish, INTRO_FALLBACK_MS);
-}
-
-// ---------- SCISSORS CURSOR ----------
-function initCursor() {
-    const cursor = document.querySelector('.cursor');
-    if (!cursor || !hasFinePointer) {
-        if (cursor) cursor.remove();
-        return;
-    }
-
-    document.documentElement.classList.add('has-cursor');
-
-    const INTERACTIVE = 'a, button, [role="button"], [role="checkbox"], summary, .gallery-image, .video-slider';
-    let x = -100;
-    let y = -100;
-    let frame = null;
-
-    const render = () => {
-        cursor.style.transform = `translate3d(${x - CURSOR_HOTSPOT}px, ${y - CURSOR_HOTSPOT}px, 0)`;
-        frame = null;
-    };
-
-    document.addEventListener('pointermove', (e) => {
-        if (e.pointerType !== 'mouse') return;
-        x = e.clientX;
-        y = e.clientY;
-        cursor.classList.add('is-visible');
-        if (!frame) frame = requestAnimationFrame(render);
-    });
-
-    document.addEventListener('pointerover', (e) => {
-        cursor.classList.toggle('is-hover', Boolean(e.target.closest(INTERACTIVE)));
-    });
-
-    document.addEventListener('pointerdown', () => cursor.classList.add('is-down'));
-    document.addEventListener('pointerup', () => cursor.classList.remove('is-down'));
-    document.documentElement.addEventListener('mouseleave', () => cursor.classList.remove('is-visible'));
 }
 
 // ---------- SCROLL REVEAL ----------
@@ -101,26 +56,27 @@ function initReveal() {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (!entry.isIntersecting) return;
-            entry.target.classList.add('is-visible');
-            observer.unobserve(entry.target);
+            const item = entry.target;
+            item.classList.add('is-visible');
+            // Drop the stagger delay once the entrance is done (see .is-revealed)
+            const settle = (e) => {
+                if (e.target !== item || e.propertyName !== 'translate') return;
+                item.classList.add('is-revealed');
+                item.removeEventListener('transitionend', settle);
+            };
+            item.addEventListener('transitionend', settle);
+            observer.unobserve(item);
         });
     }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
 
     items.forEach(item => observer.observe(item));
 }
 
-// ---------- PAUSE OFF-SCREEN LOOPS ----------
-// Infinite CSS animations keep the GPU busy even when nobody can see them.
+// ---------- OFF-SCREEN VIDEOS ----------
+// GIF-style looping videos: decode only while visible
 function initOffscreenPause() {
     if (!('IntersectionObserver' in window)) return;
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => entry.target.classList.toggle('is-offscreen', !entry.isIntersecting));
-    });
-
-    document.querySelectorAll('.marquee, .btn--gold, .cta__crown').forEach(el => observer.observe(el));
-
-    // GIF-style looping videos: decode only while visible
     const videoObserver = new IntersectionObserver((entries) => {
         entries.forEach(({ target, isIntersecting }) => {
             if (isIntersecting) {
@@ -151,14 +107,31 @@ function onPointerFrame(el, handler) {
     });
 }
 
-function initSpotlight() {
+// Liquid-glass light: injects a glare + rim catch-light layer and moves it
+// with transform only (see .glass-light). Touch devices keep the static glass.
+function initGlassLight() {
     if (!hasFinePointer) return;
 
-    document.querySelectorAll('[data-spotlight]').forEach(el => {
-        onPointerFrame(el, (e, rect) => {
-            el.style.setProperty('--mx', `${e.clientX - rect.left}px`);
-            el.style.setProperty('--my', `${e.clientY - rect.top}px`);
+    document.querySelectorAll('.glass:is([data-tilt], [data-spotlight])').forEach(card => {
+        const light = document.createElement('span');
+        light.className = 'glass-light';
+        light.setAttribute('aria-hidden', 'true');
+        light.innerHTML = '<span class="glass-light__glare"></span><span class="glass-light__rim"><span></span></span>';
+        card.append(light);
+
+        const movers = light.querySelectorAll('.glass-light__glare, .glass-light__rim > span');
+        const moveTo = (e, rect) => {
+            const t = `translate3d(${e.clientX - rect.left}px, ${e.clientY - rect.top}px, 0)`;
+            movers.forEach(m => { m.style.transform = t; });
+        };
+
+        card.addEventListener('pointerenter', (e) => {
+            if (e.pointerType !== 'mouse') return;
+            moveTo(e, card.getBoundingClientRect());
+            card.classList.add('is-lit');
         });
+        card.addEventListener('pointerleave', () => card.classList.remove('is-lit'));
+        onPointerFrame(card, moveTo);
     });
 }
 
@@ -299,10 +272,9 @@ function initHeaderAndScroll() {
 
 document.addEventListener('DOMContentLoaded', () => {
     initIntro();
-    initCursor();
     initReveal();
     initOffscreenPause();
-    initSpotlight();
+    initGlassLight();
     initTilt();
     initMagnetic();
     initHeaderAndScroll();

@@ -1,5 +1,5 @@
 // SAMC Barbers — core behaviour: language, booking, lead tracking, video slider.
-// Visual effects (intro, cursor, reveals, header) live in effects.js.
+// Visual effects (intro, reveals, header) live in effects.js.
 
 const WHATSAPP_PHONE = '573173054836';
 const LANG_STORAGE_KEY = 'samc-lang';

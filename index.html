@@ -12,7 +12,7 @@
         content="barbería, corte de pelo, barba, estilismo, medellín, servicios a domicilio, barbero profesional">
     <meta name="author" content="Santi Muñoz">
     <meta name="robots" content="index, follow">
-    <meta name="theme-color" content="#0a0a0a">
+    <meta name="theme-color" content="#000000">
     <meta name="facebook-domain-verification" content="ojqxy2g4td09cvw4ozv7w8tuus6q1v" />
     <link rel="canonical" href="https://samcbarbers.com/">
     <!-- Favicon -->
@@ -44,11 +44,10 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,500;1,700&display=swap"
         rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
     <link rel="preload" href="img/SAMC1.png" as="image">
-    <link rel="stylesheet" href="style.css?v=20261101e">
-    <link rel="stylesheet" href="components.css?v=20261101e">
-    <link rel="stylesheet" href="effects.css?v=20261101e">
+    <link rel="stylesheet" href="style.css?v=20261101f">
+    <link rel="stylesheet" href="components.css?v=20261101f">
+    <link rel="stylesheet" href="effects.css?v=20261101f">
 
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
@@ -183,6 +182,30 @@
 </head>
 
 <body class="is-loading">
+    <!-- Icon sprite: Lucide (ISC) line icons + Simple Icons (CC0) brand logos -->
+    <svg class="icon-sprite" aria-hidden="true" focusable="false">
+        <symbol id="i-crown" viewBox="0 0 24 24"><path d="M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z" /><path d="M5 21h14" /></symbol>
+        <symbol id="i-whatsapp" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></symbol>
+        <symbol id="i-arrow-down" viewBox="0 0 24 24"><path d="M12 5v14" /><path d="m19 12-7 7-7-7" /></symbol>
+        <symbol id="i-star" viewBox="0 0 24 24"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" /></symbol>
+        <symbol id="i-scissors" viewBox="0 0 24 24"><circle cx="6" cy="6" r="3" /><path d="M8.12 8.12 12 12" /><path d="M20 4 8.12 15.88" /><circle cx="6" cy="18" r="3" /><path d="M14.8 14.8 20 20" /></symbol>
+        <symbol id="i-shield-check" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /><path d="m9 12 2 2 4-4" /></symbol>
+        <symbol id="i-crosshair" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><line x1="22" x2="18" y1="12" y2="12" /><line x1="6" x2="2" y1="12" y2="12" /><line x1="12" x2="12" y1="6" y2="2" /><line x1="12" x2="12" y1="22" y2="18" /></symbol>
+        <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></symbol>
+        <symbol id="i-gem" viewBox="0 0 24 24"><path d="M6 3h12l4 6-10 13L2 9Z" /><path d="M11 3 8 9l4 13 4-13-3-6" /><path d="M2 9h20" /></symbol>
+        <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></symbol>
+        <symbol id="i-user-round" viewBox="0 0 24 24"><circle cx="12" cy="8" r="5" /><path d="M20 21a8 8 0 0 0-16 0" /></symbol>
+        <symbol id="i-map-pin" viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" /><circle cx="12" cy="10" r="3" /></symbol>
+        <symbol id="i-tiktok" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></symbol>
+        <symbol id="i-volume-x" viewBox="0 0 24 24"><path d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z" /><line x1="22" x2="16" y1="9" y2="15" /><line x1="16" x2="22" y1="9" y2="15" /></symbol>
+        <symbol id="i-chevron-left" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6" /></symbol>
+        <symbol id="i-chevron-right" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6" /></symbol>
+        <symbol id="i-play" viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3" /></symbol>
+        <symbol id="i-instagram" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></symbol>
+        <symbol id="i-chevron-up" viewBox="0 0 24 24"><path d="m18 15-6-6-6 6" /></symbol>
+        <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5" /></symbol>
+        <symbol id="i-volume-2" viewBox="0 0 24 24"><path d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z" /><path d="M16 9a5 5 0 0 1 0 6" /><path d="M19.364 18.364a9 9 0 0 0 0-12.728" /></symbol>
+    </svg>
     <!-- ========== INTRO ========== -->
     <div class="intro" id="intro" aria-hidden="true">
         <div class="intro__content">
@@ -212,15 +235,15 @@
     <header class="main-header">
         <div class="header-pill glass">
             <a href="#top" class="logo" aria-label="SAMC inicio">
-                <i class="fa-solid fa-crown logo__crown"></i>
+                <svg class="icon logo__crown" aria-hidden="true"><use href="#i-crown"></use></svg>
                 <span class="logo__text">SAMC<span>.</span></span>
                 <span class="sub-text-logo">EL BARBERO DE LA ELITE</span>
             </a>
             <nav class="main-nav" id="mainNav">
-                <a href="#experience" data-i18n="nav_experience">EXPERIENCIA</a>
-                <a href="#services" data-i18n="nav_services">SERVICIOS</a>
-                <a href="#testimonials" data-i18n="nav_testimonials">TESTIMONIOS</a>
-                <a href="#videos" data-i18n="nav_videos">VIDEOS</a>
+                <a href="#experience" data-i18n="nav_experience">Experiencia</a>
+                <a href="#services" data-i18n="nav_services">Servicios</a>
+                <a href="#testimonials" data-i18n="nav_testimonials">Testimonios</a>
+                <a href="#videos" data-i18n="nav_videos">Videos</a>
                 <a href="#faq" data-i18n="nav_faq">FAQ</a>
             </nav>
             <div class="header-actions">
@@ -247,28 +270,27 @@
                 <div class="hero__content">
                     <span class="eyebrow glass-pill" data-hero style="--d:0">
                         <span class="live-dot"></span>
-                        <span data-i18n="hero_tagline">ESTD 2024 — MEDELLÍN</span>
+                        <span data-i18n="hero_tagline">Desde 2024 · Medellín</span>
                     </span>
-                    <h1 class="hero__title" data-hero style="--d:1" data-i18n="hero_title">SAMC BARBERS<br>EXCLUSIVE</h1>
+                    <h1 class="hero__title" data-hero style="--d:1" data-i18n="hero_title">SAMC Barbers<br>Exclusive</h1>
                     <p class="hero__script" data-hero style="--d:2" data-i18n="hero_subtitle">El barbero de la élite</p>
-                    <p class="hero__description" data-hero style="--d:3" data-i18n="hero_description">Barbería privada
-                        a domicilio diseñada para hombres que comprenden que su imagen es poder.</p>
+                    <p class="hero__description" data-hero style="--d:3" data-i18n="hero_description">Barbería privada a domicilio diseñada para hombres que comprenden que su imagen es poder.</p>
                     <div class="hero__actions" data-hero style="--d:4">
                         <a href="https://wa.me/573173054836" id="whatsapp-hero" class="btn btn--gold" target="_blank"
                             rel="noopener" data-magnetic>
-                            <i class="fa-brands fa-whatsapp"></i>
-                            <span data-i18n="hero_button">AGENDAR EXPERIENCIA</span>
+                            <svg class="icon" aria-hidden="true"><use href="#i-whatsapp"></use></svg>
+                            <span data-i18n="hero_button">Agendar experiencia</span>
                         </a>
                         <a href="#services" class="btn btn--glass" data-magnetic>
-                            <span data-i18n="hero_button_secondary">VER SERVICIOS</span>
-                            <i class="fa-solid fa-arrow-down"></i>
+                            <span data-i18n="hero_button_secondary">Ver servicios</span>
+                            <svg class="icon" aria-hidden="true"><use href="#i-arrow-down"></use></svg>
                         </a>
                     </div>
                 </div>
 
                 <div class="hero__stats glass glass--blur" data-hero style="--d:5">
                     <div class="stat">
-                        <strong>5.0 <i class="fa-solid fa-star"></i></strong>
+                        <strong>5.0 <svg class="icon icon--fill" aria-hidden="true"><use href="#i-star"></use></svg></strong>
                         <span data-i18n="hero_stat_1_label">Reseñas</span>
                     </div>
                     <div class="stat">
@@ -293,9 +315,9 @@
                             disablepictureinpicture preload="metadata" aria-label="Santi Muñoz realizando un corte"></video>
                     </div>
                     <div class="media-badge glass glass--blur">
-                        <span class="media-badge__icon"><i class="fa-solid fa-scissors"></i></span>
+                        <span class="media-badge__icon"><svg class="icon" aria-hidden="true"><use href="#i-scissors"></use></svg></span>
                         <div>
-                            <strong data-i18n="experience_badge_name">SANTI MUÑOZ</strong>
+                            <strong data-i18n="experience_badge_name">Santi Muñoz</strong>
                             <span data-i18n="experience_badge_role">Barbero profesional</span>
                         </div>
                     </div>
@@ -303,45 +325,41 @@
 
                 <div class="experience__body">
                     <div class="section-head section-head--left" data-reveal>
-                        <span class="eyebrow" data-i18n="experience_tagline">LA EXPERIENCIA SAMC</span>
-                        <h2 data-i18n="experience_title">MÁS QUE UN CORTE. UNA DECLARACIÓN DE ESTATUS.</h2>
+                        <span class="eyebrow" data-i18n="experience_tagline">La experiencia SAMC</span>
+                        <h2 data-i18n="experience_title">Más que un corte. Una declaración de estatus.</h2>
                     </div>
                     <div class="perks-grid">
                         <div class="perk glass" data-reveal style="--d:0" data-spotlight>
                             <div class="perk__top">
-                                <span class="perk__icon"><i class="fa-solid fa-user-shield"></i></span>
+                                <span class="perk__icon"><svg class="icon" aria-hidden="true"><use href="#i-shield-check"></use></svg></span>
                                 <span class="perk__num">01</span>
                             </div>
-                            <h3 data-i18n="perk_1_title">ATENCIÓN PRIVADA</h3>
-                            <p data-i18n="perk_1_description">Nos enfocamos en la individualidad de cada cliente,
-                                asegurando que cada corte sea una expresión única de su estilo y personalidad.</p>
+                            <h3 data-i18n="perk_1_title">Atención privada</h3>
+                            <p data-i18n="perk_1_description">Nos enfocamos en la individualidad de cada cliente, asegurando que cada corte sea una expresión única de su estilo y personalidad.</p>
                         </div>
                         <div class="perk glass" data-reveal style="--d:1" data-spotlight>
                             <div class="perk__top">
-                                <span class="perk__icon"><i class="fa-solid fa-crosshairs"></i></span>
+                                <span class="perk__icon"><svg class="icon" aria-hidden="true"><use href="#i-crosshair"></use></svg></span>
                                 <span class="perk__num">02</span>
                             </div>
-                            <h3 data-i18n="perk_2_title">PRECISIÓN ABSOLUTA</h3>
-                            <p data-i18n="perk_2_description">Fusionando arte y técnica para lograr acabados impecables
-                                que resaltan la masculinidad y sofisticación.</p>
+                            <h3 data-i18n="perk_2_title">Precisión absoluta</h3>
+                            <p data-i18n="perk_2_description">Fusionando arte y técnica para lograr acabados impecables que resaltan la masculinidad y sofisticación.</p>
                         </div>
                         <div class="perk glass" data-reveal style="--d:2" data-spotlight>
                             <div class="perk__top">
-                                <span class="perk__icon"><i class="fa-regular fa-clock"></i></span>
+                                <span class="perk__icon"><svg class="icon" aria-hidden="true"><use href="#i-clock"></use></svg></span>
                                 <span class="perk__num">03</span>
                             </div>
-                            <h3 data-i18n="perk_3_title">PUNTUALIDAD IMPECABLE</h3>
-                            <p data-i18n="perk_3_description">Valoramos su tiempo tanto como usted, garantizando un
-                                servicio eficiente y de alta calidad sin demoras.</p>
+                            <h3 data-i18n="perk_3_title">Puntualidad impecable</h3>
+                            <p data-i18n="perk_3_description">Valoramos su tiempo tanto como usted, garantizando un servicio eficiente y de alta calidad sin demoras.</p>
                         </div>
                         <div class="perk glass" data-reveal style="--d:3" data-spotlight>
                             <div class="perk__top">
-                                <span class="perk__icon"><i class="fa-regular fa-gem"></i></span>
+                                <span class="perk__icon"><svg class="icon" aria-hidden="true"><use href="#i-gem"></use></svg></span>
                                 <span class="perk__num">04</span>
                             </div>
-                            <h3 data-i18n="perk_4_title">EXPERIENCIA PERSONALIZADA</h3>
-                            <p data-i18n="perk_4_description">Desde la consulta inicial hasta el último detalle, cada
-                                momento está diseñado para superar sus expectativas y redefinir el lujo.</p>
+                            <h3 data-i18n="perk_4_title">Experiencia personalizada</h3>
+                            <p data-i18n="perk_4_description">Desde la consulta inicial hasta el último detalle, cada momento está diseñado para superar sus expectativas y redefinir el lujo.</p>
                         </div>
                     </div>
                 </div>
@@ -352,51 +370,47 @@
         <section id="services" class="section services-catalog">
             <div class="container">
                 <div class="section-head" data-reveal>
-                    <span class="eyebrow" data-i18n="services_tagline">CATÁLOGO EXCLUSIVO</span>
-                    <h2 data-i18n="services_title">CARTA DE SERVICIOS</h2>
-                    <p data-i18n="services_subtitle">Atención a domicilio: Comodidad, privacidad y trato
-                        personalizado.</p>
+                    <span class="eyebrow" data-i18n="services_tagline">Catálogo exclusivo</span>
+                    <h2 data-i18n="services_title">Carta de servicios</h2>
+                    <p data-i18n="services_subtitle">Atención a domicilio: comodidad, privacidad y trato personalizado.</p>
                 </div>
 
                 <div class="services-container">
                     <article class="service-card glass" data-barba="true" data-reveal style="--d:0" data-tilt
                         data-spotlight tabindex="0" role="button">
                         <div class="card-top">
-                            <span class="card-icon"><i class="fa-solid fa-scissors"></i></span>
+                            <span class="card-icon"><svg class="icon" aria-hidden="true"><use href="#i-scissors"></use></svg></span>
                         </div>
-                        <h3 data-i18n="simple_cut_title">CORTE SENCILLO</h3>
+                        <h3 data-i18n="simple_cut_title">Corte sencillo</h3>
                         <div class="price">
                             <span class="cop" data-i18n="simple_cut_price_cop">$100.000 COP</span>
                             <span class="usd" data-i18n="simple_cut_price_usd">$35 USD</span>
                         </div>
-                        <p class="description" data-i18n="simple_cut_description">Ideal para quienes buscan un corte
-                            clásico e impecable sin extras.</p>
+                        <p class="description" data-i18n="simple_cut_description">Ideal para quienes buscan un corte clásico e impecable sin extras.</p>
                         <ul class="features">
                             <li data-i18n="simple_cut_feature_1">Corte a máquina y tijeras</li>
                             <li data-i18n="simple_cut_feature_2">Peinado final profesional</li>
                             <li data-i18n="simple_cut_feature_3">Desinfección de área</li>
                         </ul>
                         <div class="card-foot">
-                            <span class="duration"><i class="fa-regular fa-clock"></i> <span
+                            <span class="duration"><svg class="icon" aria-hidden="true"><use href="#i-clock"></use></svg> <span
                                     data-i18n="simple_cut_duration">45 min - 1h</span></span>
-                            <span class="card-cta"><span data-i18n="book_now">AGENDAR</span> <i
-                                    class="fa-solid fa-arrow-right"></i></span>
+                            <span class="card-cta"><span data-i18n="book_now">Agendar</span> <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"></use></svg></span>
                         </div>
                     </article>
 
                     <article class="service-card glass featured" data-barba="true" data-reveal style="--d:1" data-tilt
                         data-spotlight tabindex="0" role="button">
                         <div class="card-top">
-                            <span class="card-icon"><i class="fa-regular fa-gem"></i></span>
-                            <span class="badge" data-i18n="most_popular_badge">MÁS POPULAR</span>
+                            <span class="card-icon"><svg class="icon" aria-hidden="true"><use href="#i-gem"></use></svg></span>
+                            <span class="badge" data-i18n="most_popular_badge">Más popular</span>
                         </div>
-                        <h3 data-i18n="premium_experience_title">PREMIUM EXPERIENCE</h3>
+                        <h3 data-i18n="premium_experience_title">Premium Experience</h3>
                         <div class="price">
                             <span class="cop" data-i18n="premium_experience_price_cop">$120.000 COP</span>
                             <span class="usd" data-i18n="premium_experience_price_usd">$40 USD</span>
                         </div>
-                        <p class="description" data-i18n="premium_experience_description">Realce total de imagen con
-                            asesoría estratégica y relajación profunda.</p>
+                        <p class="description" data-i18n="premium_experience_description">Realce total de imagen con asesoría estratégica y relajación profunda.</p>
                         <ul class="features">
                             <li data-i18n="premium_experience_feature_1">Asesoría de imagen personalizada</li>
                             <li data-i18n="premium_experience_feature_2">Limpieza facial revitalizante</li>
@@ -404,25 +418,23 @@
                             <li data-i18n="premium_experience_feature_4">Pigmentación profesional</li>
                         </ul>
                         <div class="card-foot">
-                            <span class="duration"><i class="fa-regular fa-clock"></i> <span
+                            <span class="duration"><svg class="icon" aria-hidden="true"><use href="#i-clock"></use></svg> <span
                                     data-i18n="premium_experience_duration">1h 10 min</span></span>
-                            <span class="card-cta"><span data-i18n="book_now">AGENDAR</span> <i
-                                    class="fa-solid fa-arrow-right"></i></span>
+                            <span class="card-cta"><span data-i18n="book_now">Agendar</span> <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"></use></svg></span>
                         </div>
                     </article>
 
                     <article class="service-card glass" data-reveal style="--d:2" data-tilt data-spotlight tabindex="0"
                         role="button">
                         <div class="card-top">
-                            <span class="card-icon"><i class="fa-solid fa-star"></i></span>
+                            <span class="card-icon"><svg class="icon icon--fill" aria-hidden="true"><use href="#i-star"></use></svg></span>
                         </div>
-                        <h3 data-i18n="exclusive_combo_title">COMBO EXCLUSIVE</h3>
+                        <h3 data-i18n="exclusive_combo_title">Combo Exclusive</h3>
                         <div class="price">
                             <span class="cop" data-i18n="exclusive_combo_price_cop">$150.000 COP</span>
                             <span class="usd" data-i18n="exclusive_combo_price_usd">$50 USD</span>
                         </div>
-                        <p class="description" data-i18n="exclusive_combo_description">Corte Premium + Barba + Cejas.
-                            El estándar de la élite.</p>
+                        <p class="description" data-i18n="exclusive_combo_description">Corte Premium + Barba + Cejas. El estándar de la élite.</p>
                         <ul class="features">
                             <li data-i18n="exclusive_combo_feature_1">Incluye todo el Corte Premium</li>
                             <li data-i18n="exclusive_combo_feature_2">Diseño y perfilado de barba</li>
@@ -430,26 +442,24 @@
                             <li data-i18n="exclusive_combo_feature_4">Desinfección total del área</li>
                         </ul>
                         <div class="card-foot">
-                            <span class="duration"><i class="fa-regular fa-clock"></i> <span
+                            <span class="duration"><svg class="icon" aria-hidden="true"><use href="#i-clock"></use></svg> <span
                                     data-i18n="exclusive_combo_duration">1h 20 min</span></span>
-                            <span class="card-cta"><span data-i18n="book_now">AGENDAR</span> <i
-                                    class="fa-solid fa-arrow-right"></i></span>
+                            <span class="card-cta"><span data-i18n="book_now">Agendar</span> <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"></use></svg></span>
                         </div>
                     </article>
 
                     <article class="service-card glass prestige" data-reveal style="--d:3" data-tilt data-spotlight
                         tabindex="0" role="button">
                         <div class="card-top">
-                            <span class="card-icon"><i class="fa-solid fa-crown"></i></span>
+                            <span class="card-icon"><svg class="icon" aria-hidden="true"><use href="#i-crown"></use></svg></span>
                             <span class="badge badge--outline">VIP</span>
                         </div>
-                        <h3 data-i18n="prestige_combo_title">COMBO PRESTIGE</h3>
+                        <h3 data-i18n="prestige_combo_title">Combo Prestige</h3>
                         <div class="price">
                             <span class="cop" data-i18n="prestige_combo_price_cop">$180.000 COP</span>
                             <span class="usd" data-i18n="prestige_combo_price_usd">$60 USD</span>
                         </div>
-                        <p class="description" data-i18n="prestige_combo_description">El servicio definitivo.
-                            Renovación estética y cuidado de la piel.</p>
+                        <p class="description" data-i18n="prestige_combo_description">El servicio definitivo. Renovación estética y cuidado de la piel.</p>
                         <ul class="features">
                             <li data-i18n="prestige_combo_feature_1">Todo lo del Combo Exclusive</li>
                             <li data-i18n="prestige_combo_feature_2">Mascarilla facial a elección</li>
@@ -457,10 +467,9 @@
                             <li data-i18n="prestige_combo_feature_4">Opción Premium: 2 mascarillas ($200k)</li>
                         </ul>
                         <div class="card-foot">
-                            <span class="duration"><i class="fa-regular fa-clock"></i> <span
+                            <span class="duration"><svg class="icon" aria-hidden="true"><use href="#i-clock"></use></svg> <span
                                     data-i18n="prestige_combo_duration">1h 30 min</span></span>
-                            <span class="card-cta"><span data-i18n="book_now">AGENDAR</span> <i
-                                    class="fa-solid fa-arrow-right"></i></span>
+                            <span class="card-cta"><span data-i18n="book_now">Agendar</span> <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"></use></svg></span>
                         </div>
                     </article>
                 </div>
@@ -471,8 +480,8 @@
         <section id="beard-services" class="section beard">
             <div class="container">
                 <div class="section-head" data-reveal>
-                    <span class="eyebrow" data-i18n="beard_services_tagline">SERVICIOS DE BARBA</span>
-                    <h2 data-i18n="beard_services_title">DISEÑO Y CUIDADO DE BARBA</h2>
+                    <span class="eyebrow" data-i18n="beard_services_tagline">Servicios de barba</span>
+                    <h2 data-i18n="beard_services_title">Diseño y cuidado de barba</h2>
                     <p data-i18n="beard_services_subtitle">Define tu estilo con un servicio exclusivo para tu barba.</p>
                 </div>
 
@@ -480,32 +489,26 @@
                     role="button">
                     <div class="wide__left">
                         <div class="card-top">
-                            <span class="card-icon card-icon--lg"><i class="fa-solid fa-user-tie"></i></span>
+                            <span class="card-icon card-icon--lg"><svg class="icon" aria-hidden="true"><use href="#i-user-round"></use></svg></span>
                         </div>
-                        <h3 data-i18n="premium_beard_design_title">DISEÑO DE BARBA PREMIUM</h3>
+                        <h3 data-i18n="premium_beard_design_title">Diseño de barba premium</h3>
                         <div class="price">
                             <span class="cop" data-i18n="premium_beard_design_price_cop">$50.000 COP</span>
                             <span class="usd" data-i18n="premium_beard_design_price_usd">$20 USD</span>
                         </div>
-                        <p class="description" data-i18n="premium_beard_design_description">Un diseño meticuloso para
-                            una barba impecable y definida.</p>
+                        <p class="description" data-i18n="premium_beard_design_description">Un diseño meticuloso para una barba impecable y definida.</p>
                     </div>
                     <div class="wide__right">
                         <ul class="features">
-                            <li data-i18n="premium_beard_design_feature_1">Diseño y perfilado completo con máquina,
-                                navaja o tijera.</li>
-                            <li data-i18n="premium_beard_design_feature_2">Pigmentación profesional para resaltar
-                                contornos y definir la barba.</li>
-                            <li data-i18n="premium_beard_design_feature_3">Aplicación de productos hidratantes y
-                                refrescantes.</li>
-                            <li data-i18n="premium_beard_design_feature_4">Limpieza y desinfección del área de trabajo
-                                antes de finalizar.</li>
+                            <li data-i18n="premium_beard_design_feature_1">Diseño y perfilado completo con máquina, navaja o tijera.</li>
+                            <li data-i18n="premium_beard_design_feature_2">Pigmentación profesional para resaltar contornos y definir la barba.</li>
+                            <li data-i18n="premium_beard_design_feature_3">Aplicación de productos hidratantes y refrescantes.</li>
+                            <li data-i18n="premium_beard_design_feature_4">Limpieza y desinfección del área de trabajo antes de finalizar.</li>
                         </ul>
                         <div class="card-foot">
-                            <span class="duration"><i class="fa-regular fa-clock"></i> <span
+                            <span class="duration"><svg class="icon" aria-hidden="true"><use href="#i-clock"></use></svg> <span
                                     data-i18n="premium_beard_design_duration">20 - 25 min</span></span>
-                            <span class="card-cta"><span data-i18n="book_now">AGENDAR</span> <i
-                                    class="fa-solid fa-arrow-right"></i></span>
+                            <span class="card-cta"><span data-i18n="book_now">Agendar</span> <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"></use></svg></span>
                         </div>
                     </div>
                 </article>
@@ -516,47 +519,38 @@
         <section id="testimonials" class="section testimonials">
             <div class="container">
                 <div class="section-head" data-reveal>
-                    <span class="eyebrow" data-i18n="testimonials_tagline">TESTIMONIOS</span>
-                    <h2 data-i18n="testimonials_title">LO QUE DICEN NUESTROS CLIENTES</h2>
+                    <span class="eyebrow" data-i18n="testimonials_tagline">Testimonios</span>
+                    <h2 data-i18n="testimonials_title">Lo que dicen nuestros clientes</h2>
                 </div>
                 <div class="testimonials-layout">
                     <figure class="testimonial-photo" data-reveal="left">
                         <img src="img/cliente2.jpg" alt="Santi Muñoz junto a un cliente en Medellín" loading="lazy"
                             width="1536" height="2048" class="gallery-image">
                         <figcaption class="glass glass--blur">
-                            <i class="fa-solid fa-location-dot"></i>
+                            <svg class="icon" aria-hidden="true"><use href="#i-map-pin"></use></svg>
                             <span data-i18n="testimonials_photo_caption">Servicio a domicilio · Medellín</span>
                         </figcaption>
                     </figure>
                     <div class="testimonials-grid">
                         <blockquote class="testimonial-card glass" data-reveal style="--d:0" data-spotlight>
-                            <div class="testimonial-stars"><i class="fa-solid fa-star"></i><i
-                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                            <p class="testimonial-text" data-i18n="testimonial_1_text">"Definitivamente es un barbero
-                                que entiende imagen, presencia y exclusividad."</p>
+                            <div class="testimonial-stars"><svg class="icon icon--fill" aria-hidden="true"><use href="#i-star"></use></svg><svg class="icon icon--fill" aria-hidden="true"><use href="#i-star"></use></svg><svg class="icon icon--fill" aria-hidden="true"><use href="#i-star"></use></svg><svg class="icon icon--fill" aria-hidden="true"><use href="#i-star"></use></svg><svg class="icon icon--fill" aria-hidden="true"><use href="#i-star"></use></svg></div>
+                            <p class="testimonial-text" data-i18n="testimonial_1_text">"Definitivamente es un barbero que entiende imagen, presencia y exclusividad. Recomendado para quienes valoran un servicio serio y bien ejecutado."</p>
                             <footer class="testimonial-author">
                                 <span class="avatar">C</span>
                                 <span data-i18n="testimonial_1_author">- Carlos M.</span>
                             </footer>
                         </blockquote>
                         <blockquote class="testimonial-card glass" data-reveal style="--d:1" data-spotlight>
-                            <div class="testimonial-stars"><i class="fa-solid fa-star"></i><i
-                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                            <p class="testimonial-text" data-i18n="testimonial_2_text">"Desde que agendé mi primera cita
-                                con Santi, entendí que no es solo un corte, es una experiencia."</p>
+                            <div class="testimonial-stars"><svg class="icon icon--fill" aria-hidden="true"><use href="#i-star"></use></svg><svg class="icon icon--fill" aria-hidden="true"><use href="#i-star"></use></svg><svg class="icon icon--fill" aria-hidden="true"><use href="#i-star"></use></svg><svg class="icon icon--fill" aria-hidden="true"><use href="#i-star"></use></svg><svg class="icon icon--fill" aria-hidden="true"><use href="#i-star"></use></svg></div>
+                            <p class="testimonial-text" data-i18n="testimonial_2_text">"Desde que agendé mi primera cita con Santi, entendí que no es solo un corte, es una experiencia. La puntualidad, la asesoría personalizada y el nivel de detalle marcan completamente la diferencia."</p>
                             <footer class="testimonial-author">
                                 <span class="avatar">A</span>
                                 <span data-i18n="testimonial_2_author">- Andrés R.</span>
                             </footer>
                         </blockquote>
                         <blockquote class="testimonial-card glass" data-reveal style="--d:2" data-spotlight>
-                            <div class="testimonial-stars"><i class="fa-solid fa-star"></i><i
-                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                            <p class="testimonial-text" data-i18n="testimonial_3_text">"Mi barba nunca ha lucido mejor.
-                                El diseño y la pigmentación son impecables. 100% recomendado."</p>
+                            <div class="testimonial-stars"><svg class="icon icon--fill" aria-hidden="true"><use href="#i-star"></use></svg><svg class="icon icon--fill" aria-hidden="true"><use href="#i-star"></use></svg><svg class="icon icon--fill" aria-hidden="true"><use href="#i-star"></use></svg><svg class="icon icon--fill" aria-hidden="true"><use href="#i-star"></use></svg><svg class="icon icon--fill" aria-hidden="true"><use href="#i-star"></use></svg></div>
+                            <p class="testimonial-text" data-i18n="testimonial_3_text">"Mi barba nunca ha lucido mejor. El diseño y la pigmentación son impecables. 100% recomendado."</p>
                             <footer class="testimonial-author">
                                 <span class="avatar">J</span>
                                 <span data-i18n="testimonial_3_author">- Juan P.</span>
@@ -571,15 +565,14 @@
         <section id="videos" class="section videos">
             <div class="container videos__grid">
                 <div class="videos__text" data-reveal="left">
-                    <span class="eyebrow" data-i18n="videos_tagline">PORTAFOLIO</span>
-                    <h2 data-i18n="videos_title">Videos de Nuestros Trabajos</h2>
-                    <p data-i18n="videos_text">Cada corte cuenta una historia. Mira el detalle, la precisión y el
-                        resultado final.</p>
+                    <span class="eyebrow" data-i18n="videos_tagline">Portafolio</span>
+                    <h2 data-i18n="videos_title">Videos de nuestros trabajos</h2>
+                    <p data-i18n="videos_text">Cada corte cuenta una historia. Mira el detalle, la precisión y el resultado final.</p>
                     <div class="slider-dots" role="tablist" aria-label="Videos"></div>
                     <a href="https://www.tiktok.com/@elbarberodelaelite" target="_blank" rel="noopener"
                         class="btn btn--glass" data-magnetic>
-                        <i class="fa-brands fa-tiktok"></i>
-                        <span data-i18n="videos_button">VER MÁS EN TIKTOK</span>
+                        <svg class="icon" aria-hidden="true"><use href="#i-tiktok"></use></svg>
+                        <span data-i18n="videos_button">Ver más en TikTok</span>
                     </a>
                 </div>
 
@@ -587,62 +580,60 @@
                     <div class="phone__frame">
                         <span class="phone__island"></span>
                         <button class="sound-toggle" type="button" aria-label="Activar sonido" aria-pressed="false">
-                            <i class="fa-solid fa-volume-xmark"></i>
+                            <svg class="icon" aria-hidden="true"><use href="#i-volume-x"></use></svg>
                         </button>
                         <div class="video-slider">
-                            <button class="slider-btn prev" type="button" aria-label="Video anterior"><i
-                                    class="fa-solid fa-chevron-left"></i></button>
-                            <button class="slider-btn next" type="button" aria-label="Siguiente video"><i
-                                    class="fa-solid fa-chevron-right"></i></button>
+                            <button class="slider-btn prev" type="button" aria-label="Video anterior"><svg class="icon" aria-hidden="true"><use href="#i-chevron-left"></use></svg></button>
+                            <button class="slider-btn next" type="button" aria-label="Siguiente video"><svg class="icon" aria-hidden="true"><use href="#i-chevron-right"></use></svg></button>
                             <div class="slider-track">
                                 <div class="slide">
                                     <video loop muted playsinline preload="none" poster="img/SAMC.jpg">
                                         <source src="videos/video4.mp4" type="video/mp4">
                                     </video>
-                                    <div class="play-overlay"><i class="fa-solid fa-play"></i></div>
-                                    <div class="swipe-indicator"><i class="fa-solid fa-chevron-right"></i></div>
+                                    <div class="play-overlay"><svg class="icon icon--fill" aria-hidden="true"><use href="#i-play"></use></svg></div>
+                                    <div class="swipe-indicator"><svg class="icon" aria-hidden="true"><use href="#i-chevron-right"></use></svg></div>
                                 </div>
                                 <div class="slide">
                                     <video loop muted playsinline preload="none" poster="img/SAMC.jpg">
                                         <source src="videos/video5.mp4" type="video/mp4">
                                     </video>
-                                    <div class="play-overlay"><i class="fa-solid fa-play"></i></div>
-                                    <div class="swipe-indicator"><i class="fa-solid fa-chevron-right"></i></div>
+                                    <div class="play-overlay"><svg class="icon icon--fill" aria-hidden="true"><use href="#i-play"></use></svg></div>
+                                    <div class="swipe-indicator"><svg class="icon" aria-hidden="true"><use href="#i-chevron-right"></use></svg></div>
                                 </div>
                                 <div class="slide">
                                     <video loop muted playsinline preload="none" poster="img/SAMC.jpg">
                                         <source src="videos/video3.mp4" type="video/mp4">
                                     </video>
-                                    <div class="play-overlay"><i class="fa-solid fa-play"></i></div>
-                                    <div class="swipe-indicator"><i class="fa-solid fa-chevron-right"></i></div>
+                                    <div class="play-overlay"><svg class="icon icon--fill" aria-hidden="true"><use href="#i-play"></use></svg></div>
+                                    <div class="swipe-indicator"><svg class="icon" aria-hidden="true"><use href="#i-chevron-right"></use></svg></div>
                                 </div>
                                 <div class="slide">
                                     <video loop muted playsinline preload="none" poster="img/SAMC.jpg">
                                         <source src="videos/video2.mp4" type="video/mp4">
                                     </video>
-                                    <div class="play-overlay"><i class="fa-solid fa-play"></i></div>
-                                    <div class="swipe-indicator"><i class="fa-solid fa-chevron-right"></i></div>
+                                    <div class="play-overlay"><svg class="icon icon--fill" aria-hidden="true"><use href="#i-play"></use></svg></div>
+                                    <div class="swipe-indicator"><svg class="icon" aria-hidden="true"><use href="#i-chevron-right"></use></svg></div>
                                 </div>
                                 <div class="slide">
                                     <video loop muted playsinline preload="none" poster="img/SAMC.jpg">
                                         <source src="videos/video7.mp4" type="video/mp4">
                                     </video>
-                                    <div class="play-overlay"><i class="fa-solid fa-play"></i></div>
-                                    <div class="swipe-indicator"><i class="fa-solid fa-chevron-right"></i></div>
+                                    <div class="play-overlay"><svg class="icon icon--fill" aria-hidden="true"><use href="#i-play"></use></svg></div>
+                                    <div class="swipe-indicator"><svg class="icon" aria-hidden="true"><use href="#i-chevron-right"></use></svg></div>
                                 </div>
                                 <div class="slide">
                                     <video loop muted playsinline preload="none" poster="img/SAMC.jpg">
                                         <source src="videos/video6.mp4" type="video/mp4">
                                     </video>
-                                    <div class="play-overlay"><i class="fa-solid fa-play"></i></div>
-                                    <div class="swipe-indicator"><i class="fa-solid fa-chevron-right"></i></div>
+                                    <div class="play-overlay"><svg class="icon icon--fill" aria-hidden="true"><use href="#i-play"></use></svg></div>
+                                    <div class="swipe-indicator"><svg class="icon" aria-hidden="true"><use href="#i-chevron-right"></use></svg></div>
                                 </div>
                                 <div class="slide">
                                     <video loop muted playsinline preload="none" poster="img/SAMC.jpg">
                                         <source src="videos/video1.mp4" type="video/mp4">
                                     </video>
-                                    <div class="play-overlay"><i class="fa-solid fa-play"></i></div>
-                                    <div class="swipe-indicator"><i class="fa-solid fa-chevron-right"></i></div>
+                                    <div class="play-overlay"><svg class="icon icon--fill" aria-hidden="true"><use href="#i-play"></use></svg></div>
+                                    <div class="swipe-indicator"><svg class="icon" aria-hidden="true"><use href="#i-chevron-right"></use></svg></div>
                                 </div>
                             </div>
                         </div>
@@ -656,8 +647,8 @@
         <section id="faq" class="section faq">
             <div class="container container--narrow">
                 <div class="section-head" data-reveal>
-                    <span class="eyebrow" data-i18n="faq_tagline">PREGUNTAS FRECUENTES</span>
-                    <h2 data-i18n="faq_title">¿TIENES DUDAS?</h2>
+                    <span class="eyebrow" data-i18n="faq_tagline">Preguntas frecuentes</span>
+                    <h2 data-i18n="faq_title">¿Tienes dudas?</h2>
                 </div>
                 <div class="faq-container">
                     <details class="faq-item glass" data-reveal style="--d:0">
@@ -666,8 +657,7 @@
                             <span class="faq-icon"></span>
                         </summary>
                         <div class="faq-body">
-                            <p data-i18n="faq_answer_1">Puedes agendar directamente por WhatsApp al +57 317 305 4836.
-                            </p>
+                            <p data-i18n="faq_answer_1">Puedes agendar directamente por WhatsApp al +57 317 305 4836. Responde en menos de 24 horas.</p>
                         </div>
                     </details>
                     <details class="faq-item glass" data-reveal style="--d:1">
@@ -676,8 +666,7 @@
                             <span class="faq-icon"></span>
                         </summary>
                         <div class="faq-body">
-                            <p data-i18n="faq_answer_2">Prestamos servicio a domicilio en toda el área metropolitana de
-                                Medellín.</p>
+                            <p data-i18n="faq_answer_2">Prestamos servicio a domicilio en toda el área metropolitana de Medellín sin costo adicional por desplazamiento. Para ubicaciones fuera de esta zona, se aplicará una tarifa adicional determinada según la distancia. Por motivos de seguridad y calidad del servicio, no atendemos en zonas catalogadas como de alto riesgo.</p>
                         </div>
                     </details>
                     <details class="faq-item glass" data-reveal style="--d:2">
@@ -686,7 +675,7 @@
                             <span class="faq-icon"></span>
                         </summary>
                         <div class="faq-body">
-                            <p data-i18n="faq_answer_3">Traemos todo el equipo profesional.</p>
+                            <p data-i18n="faq_answer_3">Traemos todo el equipo profesional: máquinas, tijeras, navaja, productos de cuidado y desinfección. Solo necesitas un espacio iluminado.</p>
                         </div>
                     </details>
                     <details class="faq-item glass" data-reveal style="--d:3">
@@ -695,7 +684,7 @@
                             <span class="faq-icon"></span>
                         </summary>
                         <div class="faq-body">
-                            <p data-i18n="faq_answer_4">Los servicios varían entre 45 minutos y 1 hora y media.</p>
+                            <p data-i18n="faq_answer_4">Los servicios varían entre 45 minutos y 1 hora y media dependiendo del paquete elegido.</p>
                         </div>
                     </details>
                 </div>
@@ -706,15 +695,14 @@
         <section class="section cta">
             <div class="container">
                 <div class="cta__panel glass" data-reveal data-spotlight>
-                    <i class="fa-solid fa-crown cta__crown"></i>
-                    <span class="eyebrow" data-i18n="cta_tagline">TU PRÓXIMA CITA</span>
-                    <h2 data-i18n="cta_title">TU IMAGEN ES TU CARTA DE PRESENTACIÓN</h2>
-                    <p data-i18n="cta_text">Agenda hoy y vive una experiencia de barbería privada en la comodidad de tu
-                        hogar.</p>
+                    <svg class="icon cta__crown" aria-hidden="true"><use href="#i-crown"></use></svg>
+                    <span class="eyebrow" data-i18n="cta_tagline">Tu próxima cita</span>
+                    <h2 data-i18n="cta_title">Tu imagen es tu carta de presentación.</h2>
+                    <p data-i18n="cta_text">Agenda hoy y vive una experiencia de barbería privada en la comodidad de tu hogar.</p>
                     <a href="https://wa.me/573173054836" id="whatsapp-cta" class="btn btn--gold btn--lg"
                         target="_blank" rel="noopener" data-magnetic>
-                        <i class="fa-brands fa-whatsapp"></i>
-                        <span data-i18n="cta_button">AGENDAR POR WHATSAPP</span>
+                        <svg class="icon" aria-hidden="true"><use href="#i-whatsapp"></use></svg>
+                        <span data-i18n="cta_button">Agendar por WhatsApp</span>
                     </a>
                 </div>
             </div>
@@ -725,17 +713,17 @@
     <footer class="site-footer">
         <div class="container footer-content">
             <div class="footer-brand">
-                <i class="fa-solid fa-crown"></i>
-                <h3 data-i18n="footer_author">SANTI MUÑOZ</h3>
+                <svg class="icon" aria-hidden="true"><use href="#i-crown"></use></svg>
+                <h3 data-i18n="footer_author">Santi Muñoz</h3>
                 <p data-i18n="footer_quote">"La imagen correcta abre puertas que otros ni siquiera ven."</p>
             </div>
             <div class="socials">
                 <a href="https://www.instagram.com/samc_mc/" target="_blank" rel="noopener" aria-label="Instagram"
-                    class="glass"><i class="fa-brands fa-instagram"></i></a>
+                    class="glass"><svg class="icon" aria-hidden="true"><use href="#i-instagram"></use></svg></a>
                 <a href="https://www.tiktok.com/@elbarberodelaelite?_r=1&_t=ZS-93u6J1wQl7s" target="_blank"
-                    rel="noopener" aria-label="TikTok" class="glass"><i class="fa-brands fa-tiktok"></i></a>
+                    rel="noopener" aria-label="TikTok" class="glass"><svg class="icon" aria-hidden="true"><use href="#i-tiktok"></use></svg></a>
                 <a href="https://wa.me/573173054836" id="whatsapp-footer" target="_blank" rel="noopener"
-                    aria-label="WhatsApp" class="glass"><i class="fa-brands fa-whatsapp"></i></a>
+                    aria-label="WhatsApp" class="glass"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"></use></svg></a>
             </div>
             <p class="footer-legal">© <span id="year">2026</span> SAMC Barbers Exclusive · Medellín. <span
                     data-i18n="footer_rights">Todos los derechos reservados.</span></p>
@@ -745,14 +733,14 @@
     <!-- Floating actions -->
     <a href="https://api.whatsapp.com/send/?phone=573173054836&text=Hola%2C+quiero+agendar+una+cita+para+un+corte+con+SAMC+Barber&type=phone_number&app_absent=0"
         id="whatsapp-fixed" class="whatsapp-fixed" target="_blank" rel="noopener" aria-label="WhatsApp">
-        <i class="fa-brands fa-whatsapp"></i>
+        <svg class="icon" aria-hidden="true"><use href="#i-whatsapp"></use></svg>
     </a>
 
     <button id="scrollTopBtn" class="scroll-top-btn glass glass--blur" type="button" aria-label="Volver arriba">
         <svg class="scroll-top-ring" viewBox="0 0 48 48">
             <circle cx="24" cy="24" r="22" />
         </svg>
-        <i class="fa-solid fa-chevron-up"></i>
+        <svg class="icon" aria-hidden="true"><use href="#i-chevron-up"></use></svg>
     </button>
 
     <!-- Booking modal -->
@@ -760,46 +748,46 @@
         <div class="modal-content glass">
             <span class="modal-grabber"></span>
             <button class="close-modal" type="button" aria-label="Cerrar">&times;</button>
-            <span class="eyebrow" data-i18n="modal_tagline">RESERVA</span>
+            <span class="eyebrow" data-i18n="modal_tagline">Reserva</span>
             <h3 id="modalServiceTitle"></h3>
             <p class="modal-question" data-i18n="modal_question">¿Deseas agregar detalles adicionales?</p>
 
             <div class="extras-options">
                 <div class="extra-option" data-name="Barba" id="barba-option" role="checkbox" aria-checked="false"
                     tabindex="0">
-                    <span class="extra-check"><i class="fa-solid fa-check"></i></span>
+                    <span class="extra-check"><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg></span>
                     <span class="extra-name" data-i18n="extra_barba_name">Barba</span>
                     <span class="extra-price" data-i18n="extra_barba_price">$50k / $18 USD</span>
                 </div>
                 <div class="extra-option" data-name="Cejas con Navaja" role="checkbox" aria-checked="false"
                     tabindex="0">
-                    <span class="extra-check"><i class="fa-solid fa-check"></i></span>
-                    <span class="extra-name" data-i18n="extra_item_1_name">Cejas con Navaja</span>
+                    <span class="extra-check"><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg></span>
+                    <span class="extra-name" data-i18n="extra_item_1_name">Cejas con navaja</span>
                     <span class="extra-price" data-i18n="extra_item_1_price">$20k / $8 USD</span>
                 </div>
                 <div class="extra-option" data-name="Mascarilla Puntos Negros" role="checkbox" aria-checked="false"
                     tabindex="0">
-                    <span class="extra-check"><i class="fa-solid fa-check"></i></span>
-                    <span class="extra-name" data-i18n="extra_item_2_name">Mascarilla Puntos Negros</span>
+                    <span class="extra-check"><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg></span>
+                    <span class="extra-name" data-i18n="extra_item_2_name">Mascarilla de puntos negros</span>
                     <span class="extra-price" data-i18n="extra_item_2_price">$30k / $12 USD</span>
                 </div>
                 <div class="extra-option" data-name="Mascarilla Colágeno" role="checkbox" aria-checked="false"
                     tabindex="0">
-                    <span class="extra-check"><i class="fa-solid fa-check"></i></span>
-                    <span class="extra-name" data-i18n="extra_item_3_name">Mascarilla Colágeno</span>
+                    <span class="extra-check"><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg></span>
+                    <span class="extra-name" data-i18n="extra_item_3_name">Mascarilla de colágeno</span>
                     <span class="extra-price" data-i18n="extra_item_3_price">$30k / $12 USD</span>
                 </div>
                 <div class="extra-option" data-name="Limpieza Facial Profunda" role="checkbox" aria-checked="false"
                     tabindex="0">
-                    <span class="extra-check"><i class="fa-solid fa-check"></i></span>
-                    <span class="extra-name" data-i18n="extra_item_4_name">Limpieza Facial Profunda</span>
+                    <span class="extra-check"><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg></span>
+                    <span class="extra-name" data-i18n="extra_item_4_name">Limpieza facial profunda</span>
                     <span class="extra-price" data-i18n="extra_item_4_price">$60k / $20 USD</span>
                 </div>
             </div>
 
             <button id="confirmBooking" class="btn btn--gold btn--block" type="button">
-                <i class="fa-brands fa-whatsapp"></i>
-                <span data-i18n="modal_confirm">AGENDAR POR WHATSAPP</span>
+                <svg class="icon" aria-hidden="true"><use href="#i-whatsapp"></use></svg>
+                <span data-i18n="modal_confirm">Agendar por WhatsApp</span>
             </button>
         </div>
     </div>
@@ -809,9 +797,9 @@
         <img class="image-modal-content" id="modalImage" alt="">
     </div>
 
-    <script src="i18n.js?v=20261101e" defer></script>
-    <script src="script.js?v=20261101e" defer></script>
-    <script src="effects.js?v=20261101e" defer></script>
+    <script src="i18n.js?v=20261101f" defer></script>
+    <script src="script.js?v=20261101f" defer></script>
+    <script src="effects.js?v=20261101f" defer></script>
 </body>
 
 </html>

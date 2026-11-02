@@ -4,7 +4,7 @@
     "description": "Premium barbería privada a domicilio en Medellín",
     "start_url": "/",
     "display": "standalone",
-    "background_color": "#0a0a0a",
+    "background_color": "#000000",
     "theme_color": "#c5a059",
     "icons": [
         {

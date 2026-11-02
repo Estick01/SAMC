@@ -111,9 +111,9 @@
 .badge {
     padding: 6px 12px;
     border-radius: 999px;
-    font-size: 0.6rem;
+    font-size: 0.72rem;
     font-weight: 600;
-    letter-spacing: 2px;
+    letter-spacing: 0;
     color: #111;
     background: var(--gold);
 }
@@ -126,9 +126,9 @@
 }
 
 .service-card h3 {
-    font-size: 1.25rem;
-    letter-spacing: 1.5px;
-    font-weight: 500;
+    font-size: 1.3rem;
+    letter-spacing: -0.015em;
+    font-weight: 600;
     margin-bottom: 14px;
     min-height: 2.75em;
 }
@@ -199,11 +199,10 @@
     gap: 7px;
     font-size: 0.72rem;
     color: var(--gray-text);
-    letter-spacing: 1px;
-    text-transform: uppercase;
+    letter-spacing: 0;
 }
 
-.duration i { color: var(--gold); }
+.duration .icon { color: var(--gold); }
 
 .card-cta {
     display: inline-flex;
@@ -211,9 +210,9 @@
     gap: 8px;
     padding: 9px 14px;
     border-radius: 999px;
-    font-size: 0.66rem;
+    font-size: 0.8rem;
     font-weight: 600;
-    letter-spacing: 2px;
+    letter-spacing: 0;
     color: var(--gold);
     background: rgba(var(--gold-rgb), 0.1);
     transition: background 0.35s, color 0.35s, gap 0.5s var(--spring-bouncy);
@@ -295,7 +294,7 @@
     background: rgba(15, 15, 15, 0.5);
 }
 
-.testimonial-photo figcaption i { color: var(--gold); }
+.testimonial-photo figcaption .icon { color: var(--gold); }
 
 .testimonials-grid { display: grid; gap: 16px; }
 
@@ -471,7 +470,7 @@
     transition: opacity 0.4s, transform 0.5s var(--spring-bouncy), scale 0.45s var(--spring-bouncy);
 }
 
-.play-overlay i { color: var(--white); font-size: 1.3rem; margin-left: 4px; }
+.play-overlay .icon { color: var(--white); font-size: 1.4rem; margin-left: 3px; }
 .play-overlay:hover { transform: translate(-50%, -50%) scale(1.08); }
 .slide video.playing + .play-overlay { opacity: 0; }
 .slide video.playing + .play-overlay:hover { opacity: 1; }
@@ -541,9 +540,9 @@
 .faq-item summary::-webkit-details-marker { display: none; }
 
 .faq-item h3 {
-    font-size: 1rem;
-    font-weight: 500;
-    letter-spacing: 1.2px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
 }
 
 .faq-icon {
@@ -610,8 +609,8 @@
     text-align: center;
 }
 
-.footer-brand i { color: var(--gold); font-size: 1.3rem; margin-bottom: 14px; }
-.footer-brand h3 { font-size: 1.8rem; letter-spacing: 6px; margin-bottom: 12px; }
+.footer-brand .icon { color: var(--gold); font-size: 1.3rem; margin-bottom: 14px; }
+.footer-brand h3 { font-size: 1.8rem; margin-bottom: 12px; }
 
 .footer-brand p {
     font-family: var(--font-script);
@@ -740,7 +739,7 @@ body.modal-open { overflow: hidden; }
 
 #modalServiceTitle {
     font-size: 1.5rem;
-    letter-spacing: 1.5px;
+    letter-spacing: -0.02em;
     padding-right: 40px;
     margin-bottom: 8px;
 }
@@ -791,7 +790,7 @@ body.modal-open { overflow: hidden; }
     display: grid;
     place-items: center;
     border: 1.5px solid rgba(255, 255, 255, 0.25);
-    font-size: 0.65rem;
+    font-size: 0.85rem;
     color: transparent;
     transition: background 0.3s, border-color 0.3s, color 0.3s, scale 0.5s var(--spring-bouncy);
 }

@@ -232,7 +232,7 @@ function initVideoSlider() {
         videos.forEach(video => { video.muted = muted; });
         soundBtn.setAttribute('aria-pressed', String(!muted));
         soundBtn.setAttribute('aria-label', muted ? 'Activar sonido' : 'Silenciar');
-        soundBtn.querySelector('i').className = muted ? 'fa-solid fa-volume-xmark' : 'fa-solid fa-volume-high';
+        soundBtn.querySelector('use').setAttribute('href', muted ? '#i-volume-x' : '#i-volume-2');
     });
 
     // Pointer drag / swipe (works for mouse, touch and pen)
